@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 exports.default = router;
-const Controller_1 = require("../Controller");
-router.get('/', Controller_1.DisplayHomePage);
+const index_1 = require("../Controller/index");
+router.get('/', index_1.DisplayHomePage);
+router.get('/home', index_1.DisplayHomePage);
+router.get('/survey-list', index_1.DisplaySurveyListPage);
 module.exports = router;
 //# sourceMappingURL=index.js.map

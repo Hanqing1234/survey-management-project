@@ -1,0 +1,28 @@
+<div class="row justify-content-lg-center g-3" style="margin: 100px;">
+    <h1 style="text-align: center"><%= title %> </h1>
+
+    <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="name">Survey Name</span>
+            <input id="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="Contact Name"
+            name="name" value="<%= list.name %>" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="name">Survey Number</span>
+            <input id="number" type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="Contact Number"
+            name="number" value="<%= list.created %>" required>
+        </div> 
+
+        <% if (title == "Update") { %>
+        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
+        <a href="/survey-list/delete/<%= list._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
+        <% } else { %>
+       <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Add</button>
+       <% } %>
+
+        <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
+        
+    </form>
+</div>
