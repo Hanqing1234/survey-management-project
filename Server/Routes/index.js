@@ -11,4 +11,6 @@ router.get('/', index_1.DisplayHomePage);
 router.get('/home', index_1.DisplayHomePage);
 router.get('/survey-list', index_1.DisplaySurveyListPage);
 module.exports = router;
+router.get('/add', index_1.DisplayAddPage);
+router.post('/add', index_1.ProcessAddPage);
 //# sourceMappingURL=index.js.map

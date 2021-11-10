@@ -1,4 +1,4 @@
-<div class="row justify-content-lg-center g-3" style="margin: 100px;">
+<div class="row justify-content-lg-center g-3" style="margin: 50px;">
     <h1 style="text-align: center"><%= title %> </h1>
 
     <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
@@ -6,13 +6,13 @@
         <div class="input-group mb-3">
             <span class="input-group-text" id="name">Survey Name</span>
             <input id="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="Contact Name"
-            name="name" value="<%= list.name %>" required>
+            name="name" value="<%= list.title %>" required>
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text" id="name">Survey Number</span>
-            <input id="number" type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="Contact Number"
-            name="number" value="<%= list.created %>" required>
+            <span class="input-group-text" id="name">Author</span>
+            <input id="author" type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="Contact Number"
+            name="author" value="<%= list.author%>" required>
         </div> 
 
         <% if (title == "Update") { %>

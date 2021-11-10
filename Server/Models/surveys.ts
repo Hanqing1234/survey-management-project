@@ -4,6 +4,7 @@ const Schema = mongoose.Schema; // alias for mongoose Schema
 const SurveySchema = new Schema
 ({
     title: String,
+    author: String,
     created: 
     {
         type: Date,

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
+exports.ProcessDeletePage = exports.ProcessAddPage = exports.DisplayAddPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 function DisplayHomePage(req, res, next) {
     res.render('index', { title: 'Home', page: 'home' });
@@ -19,4 +19,33 @@ function DisplaySurveyListPage(req, res, next) {
     });
 }
 exports.DisplaySurveyListPage = DisplaySurveyListPage;
+function DisplayAddPage(req, res, next) {
+    res.render('index', { title: 'Add', page: 'update', list: '' });
+}
+exports.DisplayAddPage = DisplayAddPage;
+function ProcessAddPage(req, res, next) {
+    let newContact = new surveys_1.default({
+        "title": req.body.name,
+        "author": req.body.author,
+    });
+    surveys_1.default.create(newContact, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/survey-list');
+    });
+}
+exports.ProcessAddPage = ProcessAddPage;
+function ProcessDeletePage(req, res, next) {
+    let id = req.params.id;
+    surveys_1.default.remove({ _id: id }, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/survey-list');
+    });
+}
+exports.ProcessDeletePage = ProcessDeletePage;
 //# sourceMappingURL=index.js.map
