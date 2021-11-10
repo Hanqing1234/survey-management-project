@@ -12,6 +12,8 @@
                     <th scope="col">Created Date</th>
                     <th scope="col">Author</th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,8 +24,9 @@
                         <td><%= list[count].title %></td>
                         <td><%= list[count].created %></td>  
                         <td><%= list[count].author %></td>    
-                        <td class="text-center"><a href="#" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i>Take Survey</a></td>                                                          
-                        
+                        <td class="text-center"><a href="#" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>                                                          
+                        <td class="text-center"><a href="/survey-list/update/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
+                        <td class="text-center"><a href="/survey-list/delete/<%= list[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
                     </tr>
                 <% } %>    
             </tbody>

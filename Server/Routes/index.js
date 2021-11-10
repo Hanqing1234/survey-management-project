@@ -10,7 +10,10 @@ const index_1 = require("../Controller/index");
 router.get('/', index_1.DisplayHomePage);
 router.get('/home', index_1.DisplayHomePage);
 router.get('/survey-list', index_1.DisplaySurveyListPage);
-module.exports = router;
 router.get('/add', index_1.DisplayAddPage);
 router.post('/add', index_1.ProcessAddPage);
+router.get('/update/:id', index_1.DisplayUpdatePage);
+router.post('/update/:id', index_1.ProcessUpdatePage);
+router.get('/delete/:id', index_1.ProcessDeletePage);
+module.exports = router;
 //# sourceMappingURL=index.js.map

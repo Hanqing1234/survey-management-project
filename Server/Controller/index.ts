@@ -71,3 +71,49 @@ export function ProcessDeletePage(req: Request, res: Response, next: NextFunctio
     res.redirect('/survey-list');
   });
 }
+
+//Display Update Page
+export function DisplayUpdatePage(req: Request, res: Response, next: NextFunction): void
+{
+    let id = req.params.id;
+
+    //pass the id to the db 
+
+    //db.list.find({"_id": id})
+    SurveyList.findById(id, {}, {}, (err, surveyToUpdate) =>
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+
+        //show the update view
+        res.render('index', { title: 'Update', page: 'update', list: surveyToUpdate })
+    }); 
+}
+
+// Process Update page
+export function ProcessUpdatePage(req: Request, res: Response, next: NextFunction): void
+{
+    let id = req.params.id;
+
+    // instantiate a new Contact Item
+    let updatedSurveyList = new SurveyList
+    ({
+      "_id": id,
+      "title": req.body.name,
+      "author": req.body.author
+    });
+  
+    // find the clothing item via db.clothing.update({"_id":id}) and then update
+    SurveyList.updateOne({_id: id}, updatedSurveyList, {}, (err) =>{
+      if(err)
+      {
+        console.error(err);
+        res.end(err);
+      }
+  
+      res.redirect('/survey-list');
+    });
+}
