@@ -7,7 +7,8 @@ export default router;
 import { DisplayHomePage, DisplaySurveyListPage, 
     DisplayAddSurveyPage, ProcessAddSurveyPage, DisplayUpdateSurveyPage, 
     ProcessUpdateSurveyPage, ProcessDeleteSurveyPage, DisplayQuestionPage,
-    DisplayAddQuestionPage, ProcessAddQuestionPage } from '../Controller/index';
+    DisplayAddQuestionPage, ProcessAddQuestionPage, DisplayUpdateQuestionPage,
+    ProcessUpdateQuestionPage, ProcessDeleteQuestionPage } from '../Controller/index';
 
 /* GET home page. */
 router.get('/', DisplayHomePage);
@@ -41,5 +42,14 @@ router.get('/add-question/:id', DisplayAddQuestionPage);
 
 /*Post display /add-question/:id page */
 router.post('/add-question/:id', ProcessAddQuestionPage);
+
+/*GET display /add-question/:id page */
+router.get('/update-question/:id', DisplayUpdateQuestionPage);
+
+/*Post display /add-question/:id page */
+router.post('/update-question/:id', ProcessUpdateQuestionPage);
+
+/*GET Process /question/delete/:id */
+router.get('/delete-question/:id',  ProcessDeleteQuestionPage);
 
 module.exports = router;

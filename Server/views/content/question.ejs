@@ -17,28 +17,15 @@
         <a href="/add-question/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Question</a>
 
         <br>
-        <br>
- 
-        <% for(let count=0; count < list.length; count++) { %>
-          <!-- Repeatable Row Template -->
-          <tr>
-              <th scope="row"><%= count + 1 %></th>
-              <td><%= list[count].title %></td>
-              <td><%= list[count].created %></td>  
-              <td><%= list[count].author %></td>    
-              <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>                                                          
-              <td class="text-center"><a href="/survey-list/update-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
-              <td class="text-center"><a href="/survey-list/delete-survey/<%= list[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
-          </tr>
-      <% } %>     
+        <br> 
   
       <% for(let count=0; count < list2.length; count++) { %>
         <form class="px-4" action="">
           <p class="text-left">
             <th scope="row"><%= count + 1 %>.</th>
-            <strong><%= list2[count].questionText %>:</strong>
-            <td class="text-center"><a href="/survey-list/update-survey/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
-            <td class="text-center"><a href="/survey-list/delete-survey/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
+            <strong><%= list2[count].questionText %></strong>
+            <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
+            <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
           </p>
   
           <div class="form-check mb-2">

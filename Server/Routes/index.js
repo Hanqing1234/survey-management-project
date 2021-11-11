@@ -18,5 +18,8 @@ router.get('/delete-survey/:id', index_1.ProcessDeleteSurveyPage);
 router.get('/question/:id', index_1.DisplayQuestionPage);
 router.get('/add-question/:id', index_1.DisplayAddQuestionPage);
 router.post('/add-question/:id', index_1.ProcessAddQuestionPage);
+router.get('/update-question/:id', index_1.DisplayUpdateQuestionPage);
+router.post('/update-question/:id', index_1.ProcessUpdateQuestionPage);
+router.get('/delete-question/:id', index_1.ProcessDeleteQuestionPage);
 module.exports = router;
 //# sourceMappingURL=index.js.map
