@@ -20,6 +20,8 @@ const SurveySchema = new Schema
     collection: "survey"
 });
 
+
 const Model = mongoose.model("SurveyList", SurveySchema);
+
 
 export default Model;

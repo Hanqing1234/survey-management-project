@@ -5,8 +5,9 @@ export default router;
 
 //instantiate an object of type index controller
 import { DisplayHomePage, DisplaySurveyListPage, 
-    DisplayAddPage, ProcessAddPage, DisplayUpdatePage, 
-    ProcessUpdatePage, ProcessDeletePage } from '../Controller/index';
+    DisplayAddSurveyPage, ProcessAddSurveyPage, DisplayUpdateSurveyPage, 
+    ProcessUpdateSurveyPage, ProcessDeleteSurveyPage, DisplayQuestionPage,
+    DisplayAddQuestionPage, ProcessAddQuestionPage } from '../Controller/index';
 
 /* GET home page. */
 router.get('/', DisplayHomePage);
@@ -18,18 +19,27 @@ router.get('/home', DisplayHomePage);
 router.get('/survey-list',  DisplaySurveyListPage);
 
 /*GET display /survey-list/add page */
-router.get('/add', DisplayAddPage);
+router.get('/add-survey', DisplayAddSurveyPage);
 
 /*POST process /survey-list/add page */
-router.post('/add',  ProcessAddPage);
+router.post('/add-survey',  ProcessAddSurveyPage);
 
 /*GET display update/:id page - with /contacts-list/update:id */
-router.get('/update/:id', DisplayUpdatePage);
+router.get('/update-survey/:id', DisplayUpdateSurveyPage);
 
 /*POST process /contacts-list/update/:id page */
-router.post('/update/:id',  ProcessUpdatePage);
+router.post('/update-survey/:id',  ProcessUpdateSurveyPage);
 
 /*GET Process /contacts-list/delete/:id */
-router.get('/delete/:id',  ProcessDeletePage);
+router.get('/delete-survey/:id',  ProcessDeleteSurveyPage);
+
+/*GET question page */
+router.get('/question/:id', DisplayQuestionPage);
+
+/*GET display /add-question/:id page */
+router.get('/add-question/:id', DisplayAddQuestionPage);
+
+/*Post display /add-question/:id page */
+router.post('/add-question/:id', ProcessAddQuestionPage);
 
 module.exports = router;

@@ -1,0 +1,47 @@
+<div class="row justify-content-lg-center g-3" style="margin: 50px;">
+    <h1 style="text-align: center"><%= title %> </h1>
+
+    <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="name">Question</span>
+            <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name" aria-describedby="Contact Name"
+            name="questionText" value="<%=  %>" required>
+        </div>
+
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+            <input id="firstChoice" type="text" class="form-control" placeholder="First Choice" aria-label="Name" aria-describedby="Contact Name"
+            name="firstChoice" value="<%=  %>" required>
+          </div>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
+            <input id="secondChoice" type="text" class="form-control" placeholder="Second Choice" aria-label="Name" aria-describedby="Contact Name"
+            name="secondChoice" value="<%=  %>" required>
+          </div>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
+            <input id="thirdChoice" type="text" class="form-control" placeholder="Third Choice" aria-label="Name" aria-describedby="Contact Name"
+            name="thirdChoice" value="<%=  %>" required>
+            
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
+            <input id="fourthChoice" type="text" class="form-control" placeholder="Fourth Choice" aria-label="Name" aria-describedby="Contact Name"
+            name="fourthChoice" value="<%=  %>" required>
+          </div>
+       
+
+        <% if (title == "Update") { %>
+        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
+        <a href="/survey-list/delete/<%= list._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
+        <% } else { %>
+       <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Add</button>
+       <% } %>
+
+        <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
+        
+    </form>
+</div>

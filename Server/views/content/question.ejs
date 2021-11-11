@@ -1,0 +1,79 @@
+<div class="mx-0 mx-sm-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+          <p>
+            <strong>Your opinion matters</strong>
+          </p>
+          <p>
+            Have some ideas how to improve our product?
+            <strong>Give us your feedback.</strong>
+          </p>
+        </div>
+  
+        <hr/>
+
+        <a href="/add-question/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Question</a>
+
+        <br>
+        <br>
+ 
+        <% for(let count=0; count < list.length; count++) { %>
+          <!-- Repeatable Row Template -->
+          <tr>
+              <th scope="row"><%= count + 1 %></th>
+              <td><%= list[count].title %></td>
+              <td><%= list[count].created %></td>  
+              <td><%= list[count].author %></td>    
+              <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>                                                          
+              <td class="text-center"><a href="/survey-list/update-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
+              <td class="text-center"><a href="/survey-list/delete-survey/<%= list[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
+          </tr>
+      <% } %>     
+  
+      <% for(let count=0; count < list2.length; count++) { %>
+        <form class="px-4" action="">
+          <p class="text-left">
+            <th scope="row"><%= count + 1 %>.</th>
+            <strong><%= list2[count].questionText %>:</strong>
+            <td class="text-center"><a href="/survey-list/update-survey/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
+            <td class="text-center"><a href="/survey-list/delete-survey/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
+          </p>
+  
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+            <label class="form-check-label" for="radio2Example1">
+              <%= list2[count].first_Choice %>
+            </label>
+            
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
+            <label class="form-check-label" for="radio2Example2">
+              <%= list2[count].second_Choice %>
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
+            <label class="form-check-label" for="radio2Example3">
+              <%= list2[count].third_Choice %>
+            </label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
+            <label class="form-check-label" for="radio2Example4">
+              <%= list2[count].fourth_Choice %>
+            </label>
+          </div>
+  
+        </form>
+        <% } %>
+
+
+      </div>
+      <div class="card-footer text-end">
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
