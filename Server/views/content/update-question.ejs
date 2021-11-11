@@ -37,11 +37,10 @@
         <% if (title == "Update Question") { %>
         <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
         <a href="/delete-question/<%= list2._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
+        <a href="/question/<%= list2.survey_id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
         <% } else { %>
        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Add</button>
-       <% } %>
-
-        <a href="/question/<%= list2.survey_id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
-        
+       <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
+       <% } %>               
     </form>
 </div>

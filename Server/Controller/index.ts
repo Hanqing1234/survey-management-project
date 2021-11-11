@@ -182,7 +182,7 @@ export function DisplayAddQuestionPage(req: Request, res: Response, next: NextFu
               res.end(err);         
           }
           //show the update view
-        res.render('index', { title: 'Add-Question', page: 'update-question', list: questionToAdd, list2: ''});
+        res.render('index', { title: 'Add-Question', page: 'update-question', list: questionToAdd, list2: questionToAdd2});
         });               
     }); 
     
@@ -192,6 +192,7 @@ export function DisplayAddQuestionPage(req: Request, res: Response, next: NextFu
 export function ProcessAddQuestionPage(req: Request, res: Response, next: NextFunction): void
 {
     // instantiate a new Survey List
+    
     let id = req.params.id;
     let newQuestion = new QuestionList
   ({

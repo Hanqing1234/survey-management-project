@@ -116,7 +116,7 @@ function DisplayAddQuestionPage(req, res, next) {
                 console.error(err);
                 res.end(err);
             }
-            res.render('index', { title: 'Add-Question', page: 'update-question', list: questionToAdd, list2: '' });
+            res.render('index', { title: 'Add-Question', page: 'update-question', list: questionToAdd, list2: questionToAdd2 });
         });
     });
 }
