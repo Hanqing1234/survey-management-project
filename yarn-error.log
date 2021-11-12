@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/mongoose-date-format --dev
 
 PATH: 
-  C:\Users\Hanqing\Downloads\WINDOWS.X64_193000_db_home\bin;C:\Python39\Scripts\;C:\Python39\;C:\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\jdk-11.0.12\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Users\Hanqing\AppData\Roaming\npm;D:\MongoDB\bin;C:\Users\Hanqing\AppData\Local\Microsoft\WindowsApps;C:\Microsoft VS Code\bin;C:\Users\Hanqing\.dotnet\tools;C:\Users\Hanqing\AppData\Local\gitkraken\bin;D:\heroku\bin
+  C:\Users\Hanqing\Downloads\WINDOWS.X64_193000_db_home\bin;C:\Python39\Scripts\;C:\Python39\;C:\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\jdk-11.0.12\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Users\Hanqing\AppData\Roaming\npm;D:\MongoDB\bin;C:\Users\Hanqing\AppData\Local\Microsoft\WindowsApps;C:\Microsoft VS Code\bin;C:\Users\Hanqing\.dotnet\tools;C:\jdk-11.0.12\bin;C:\Users\Hanqing\AppData\Roaming\npm;C:\Users\Hanqing\AppData\Local\gitkraken\bin;D:\MongoDB\bin;D:\heroku\bin
 
 Yarn version: 
   1.22.11
@@ -14,12 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\Hanqing\OneDrive - Centennial College\桌面\Tix\package.json: Unexpected token } in JSON at position 651
-      at JSON.parse (<anonymous>)
-      at C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+  Error: https://registry.yarnpkg.com/@types%2fmongoose-date-format: Not found
+      at Request.params.callback [as _callback] (C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66992:18)
+      at Request.self.callback (C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140763:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141735:10)
+      at Request.emit (events.js:400:28)
+      at IncomingMessage.<anonymous> (C:\Users\Hanqing\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141657:12)
+      at Object.onceWrapper (events.js:519:28)
+      at IncomingMessage.emit (events.js:412:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
@@ -45,10 +50,12 @@ npm manifest:
       "ejs": "^3.1.6",
       "express": "^4.17.1",
       "http-errors": "^1.8.0",
+      "jquery": "^3.6.0",
       "mongoose": "^6.0.12",
+      "mongoose-date-format": "^1.2.0",
       "morgan": "^1.10.0",
       "passport-local": "^1.0.0",
-      "passport-local-mongoose": "^6.1.0",
+      "passport-local-mongoose": "^6.1.0"
     },
     "devDependencies": {
       "@types/bootstrap": "^5.1.4",
@@ -57,6 +64,7 @@ npm manifest:
       "@types/debug": "^4.1.7",
       "@types/express": "^4.17.13",
       "@types/express-session": "^1.17.4",
+      "@types/jquery": "^3.5.6",
       "@types/morgan": "^1.9.3",
       "@types/node": "^16.9.1",
       "@types/passport": "^1.0.7",
@@ -172,7 +180,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-1.8.1.tgz#e81ad28a60bee0328c6d2384e029aec626f1ae67"
     integrity sha512-e+2rjEwK6KDaNOm5Aa9wNGgyS9oSZU/4pfSMMPYNOfjvFI0WVXm29+ITRFr6aKDvvKo7uU1jV68MW4ScsfDi7Q==
   
-  "@types/jquery@*":
+  "@types/jquery@*", "@types/jquery@^3.5.6":
     version "3.5.8"
     resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.8.tgz#83bfbcdf4e625c5471590f92703c06aadb052a09"
     integrity sha512-cXk6NwqjDYg+UI9p2l3x0YmPa4m7RrXqmbK4IpVVpRJiYXU/QTo+UZrn54qfE1+9Gao4qpYqUnxm5ZCy2FTXAw==
@@ -591,6 +599,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
     integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
   
+  generaterr@^1.5.0:
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/generaterr/-/generaterr-1.5.0.tgz#b0ceb6cc5164df2a061338cc340a8615395c52fc"
+    integrity sha1-sM62zFFk3yoGEzjMNAqGFTlcUvw=
+  
   has-flag@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
@@ -671,10 +684,20 @@ Lockfile:
       filelist "^1.0.1"
       minimatch "^3.0.4"
   
+  jquery@^3.6.0:
+    version "3.6.0"
+    resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+    integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+  
   kareem@2.3.2:
     version "2.3.2"
     resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.2.tgz#78c4508894985b8d38a0dc15e1a8e11078f2ca93"
     integrity sha512-STHz9P7X2L4Kwn72fA4rGyqyXdmrMSdxqHx9IXon/FXluXieaFA6KJ2upcHAHxQPQ0LeM/OjLrhFxifHewOALQ==
+  
+  lodash@^4.17.10:
+    version "4.17.21"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+    integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
   
   media-typer@0.3.0:
     version "0.3.0"
@@ -720,6 +743,11 @@ Lockfile:
     dependencies:
       brace-expansion "^1.1.7"
   
+  moment@^2.22.2:
+    version "2.29.1"
+    resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+    integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+  
   mongodb-connection-string-url@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/mongodb-connection-string-url/-/mongodb-connection-string-url-2.1.0.tgz#9c522c11c37f571fecddcb267ac4a76ef432aeb7"
@@ -751,6 +779,14 @@ Lockfile:
       mongodb-connection-string-url "^2.0.0"
     optionalDependencies:
       saslprep "^1.0.3"
+  
+  mongoose-date-format@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/mongoose-date-format/-/mongoose-date-format-1.2.0.tgz#ef1755d1a429fda33b25dc4dc8912c287f9c5fca"
+    integrity sha512-uK4OHS3H08N6LAgyVdqadgpEHvUGd9rtYDLz2emWA/WlzF5eGfXYXGAJCtHqV3c+30+buU37SMFr9fEOHyJrwg==
+    dependencies:
+      lodash "^4.17.10"
+      moment "^2.22.2"
   
   mongoose-legacy-pluralize@1.0.2:
     version "1.0.2"
@@ -877,6 +913,27 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
     integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
   
+  passport-local-mongoose@^6.1.0:
+    version "6.1.0"
+    resolved "https://registry.yarnpkg.com/passport-local-mongoose/-/passport-local-mongoose-6.1.0.tgz#341db91359ac855057476e0f2d795f6a6c5f686b"
+    integrity sha512-kxRDejpBXoPmWau1RCrmEeNYEXGG9ec4aDYjd0pFAHIEAzZ0RXKn581ISfjpHZ1zZLoCCM2pWUo4SfGHNJNwnw==
+    dependencies:
+      generaterr "^1.5.0"
+      passport-local "^1.0.0"
+      scmp "^2.1.0"
+  
+  passport-local@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
+    integrity sha1-H+YyaMkudWBmJkN+O5BmYsFbpu4=
+    dependencies:
+      passport-strategy "1.x.x"
+  
+  passport-strategy@1.x.x:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
+    integrity sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=
+  
   path-to-regexp@0.1.7:
     version "0.1.7"
     resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -964,6 +1021,11 @@ Lockfile:
     integrity sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag==
     dependencies:
       sparse-bitfield "^3.0.3"
+  
+  scmp@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/scmp/-/scmp-2.1.0.tgz#37b8e197c425bdeb570ab91cc356b311a11f9c9a"
+    integrity sha512-o/mRQGk9Rcer/jEEw/yw4mwo3EU/NvYvp577/Btqrym9Qy5/MdWGBqipbALgd2lrdWTJ5/gqDusxfnQBxOxT2Q==
   
   send@0.17.1:
     version "0.17.1"

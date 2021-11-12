@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
+import moment from "moment";
 const Schema = mongoose.Schema; // alias for mongoose Schema
+
 
 const SurveySchema = new Schema
 ({
@@ -7,21 +9,19 @@ const SurveySchema = new Schema
     author: String,
     created: 
     {
-        type: Date,
-        default: Date.now()
+        type: String,
+        default: moment(new Date(Date.now())).format('YYYY-MM-DD HH:mm:ss')
     },
     updated:
     {
-        type: Date,
-        default: Date.now()
+        type: String,
+        default: moment(new Date(Date.now())).format('YYYY-MM-DD HH:mm:ss')
     }
 },
 {
     collection: "survey"
 });
 
-
 const Model = mongoose.model("SurveyList", SurveySchema);
-
 
 export default Model;
