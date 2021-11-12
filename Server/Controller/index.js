@@ -91,8 +91,6 @@ function DisplayQuestionPage(req, res, next) {
                 console.error(err);
                 res.end(err);
             }
-            console.log(questionToAdd);
-            console.log(questionToAdd2);
             res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2 });
         });
     });
@@ -220,7 +218,17 @@ function DisplayUpdateQuestionPage(req, res, next) {
             res.end(err);
         }
         console.log(questionToUpdate);
-        res.render('index', { title: 'Update Question', page: 'update-question-mc', list2: questionToUpdate });
+        let surveyId = JSON.stringify(questionToUpdate, ['questionType']).substr(17, 10);
+        console.log(surveyId);
+        if (surveyId == "True/False") {
+            res.render('index', { title: 'Update Question', page: 'update-question-tf', list2: questionToUpdate });
+        }
+        else if (surveyId == "Multiple C") {
+            res.render('index', { title: 'Update Question', page: 'update-question-mc', list2: questionToUpdate });
+        }
+        else {
+            res.render('index', { title: 'Update Question', page: 'update-question-sa', list2: questionToUpdate });
+        }
     });
 }
 exports.DisplayUpdateQuestionPage = DisplayUpdateQuestionPage;

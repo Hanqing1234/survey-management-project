@@ -146,9 +146,6 @@ export function DisplayQuestionPage(req: Request, res: Response, next: NextFunct
             
           }
 
-          console.log(questionToAdd);
-          console.log(questionToAdd2);
-          
           res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2});
        
         });
@@ -356,8 +353,17 @@ export function DisplayUpdateQuestionPage(req: Request, res: Response, next: Nex
         console.log(questionToUpdate)
      
         //show the update view
+        //get the survey_type
+       let surveyId = JSON.stringify(questionToUpdate, ['questionType']).substr(17,10);
+       console.log(surveyId);
+       if(surveyId == "True/False"){
+        res.render('index', { title: 'Update Question', page: 'update-question-tf', list2: questionToUpdate })
+       }else if (surveyId == "Multiple C"){
         res.render('index', { title: 'Update Question', page: 'update-question-mc', list2: questionToUpdate })
-       
+       }else{
+        res.render('index', { title: 'Update Question', page: 'update-question-sa', list2: questionToUpdate })
+       }
+
     }); 
 }
 
