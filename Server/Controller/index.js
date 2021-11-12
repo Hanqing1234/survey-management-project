@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddQuestionPage = exports.DisplayAddQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
+exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 function DisplayHomePage(req, res, next) {
@@ -86,22 +86,19 @@ function DisplayQuestionPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log(question_1.default);
-        console.log(questionToAdd);
-        console.log("2");
         question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd2) => {
             if (err) {
                 console.error(err);
                 res.end(err);
             }
-            res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2 });
+            console.log(questionToAdd);
             console.log(questionToAdd2);
-            console.log("good");
+            res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2 });
         });
     });
 }
 exports.DisplayQuestionPage = DisplayQuestionPage;
-function DisplayAddQuestionPage(req, res, next) {
+function DisplayAddMCQuestionPage(req, res, next) {
     let id = req.params.id;
     console.log(id);
     console.log("DisplayAddQuestionPage");
@@ -116,15 +113,16 @@ function DisplayAddQuestionPage(req, res, next) {
                 console.error(err);
                 res.end(err);
             }
-            res.render('index', { title: 'Add-Question', page: 'update-question', list: questionToAdd, list2: questionToAdd2 });
+            res.render('index', { title: 'Add Multiple Choice Question', page: 'update-question-mc', list: questionToAdd, list2: questionToAdd2 });
         });
     });
 }
-exports.DisplayAddQuestionPage = DisplayAddQuestionPage;
-function ProcessAddQuestionPage(req, res, next) {
+exports.DisplayAddMCQuestionPage = DisplayAddMCQuestionPage;
+function ProcessAddMCQuestionPage(req, res, next) {
     let id = req.params.id;
     let newQuestion = new question_1.default({
         "questionText": req.body.questionText,
+        "questionType": "Multiple Choice",
         "survey_id": req.params.id,
         "first_Choice": req.body.firstChoice,
         "second_Choice": req.body.secondChoice,
@@ -140,7 +138,80 @@ function ProcessAddQuestionPage(req, res, next) {
         res.redirect('/question/' + req.params.id);
     });
 }
-exports.ProcessAddQuestionPage = ProcessAddQuestionPage;
+exports.ProcessAddMCQuestionPage = ProcessAddMCQuestionPage;
+function DisplayAddTFQuestionPage(req, res, next) {
+    let id = req.params.id;
+    console.log(id);
+    surveys_1.default.findById(id, {}, {}, (err, questionToAdd) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(questionToAdd);
+        question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd2) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }
+            res.render('index', { title: 'Add True or False Question', page: 'update-question-tf', list: questionToAdd, list2: questionToAdd2 });
+        });
+    });
+}
+exports.DisplayAddTFQuestionPage = DisplayAddTFQuestionPage;
+function ProcessAddTFQuestionPage(req, res, next) {
+    let id = req.params.id;
+    let newQuestion = new question_1.default({
+        "questionText": req.body.questionText,
+        "questionType": "True/False",
+        "survey_id": req.params.id
+    });
+    console.log(id);
+    question_1.default.create(newQuestion, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/question/' + req.params.id);
+    });
+}
+exports.ProcessAddTFQuestionPage = ProcessAddTFQuestionPage;
+function DisplayAddSAQuestionPage(req, res, next) {
+    let id = req.params.id;
+    console.log(id);
+    surveys_1.default.findById(id, {}, {}, (err, questionToAdd) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(questionToAdd);
+        question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd2) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }
+            res.render('index', { title: 'Add Short Answer Question', page: 'update-question-sa', list: questionToAdd, list2: questionToAdd2 });
+        });
+    });
+}
+exports.DisplayAddSAQuestionPage = DisplayAddSAQuestionPage;
+function ProcessAddSAQuestionPage(req, res, next) {
+    let id = req.params.id;
+    let newQuestion = new question_1.default({
+        "questionText": req.body.questionText,
+        "questionType": "Short Answer",
+        "survey_id": req.params.id,
+        "option_Text": req.body.optionText
+    });
+    console.log(id);
+    question_1.default.create(newQuestion, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/question/' + req.params.id);
+    });
+}
+exports.ProcessAddSAQuestionPage = ProcessAddSAQuestionPage;
 function DisplayUpdateQuestionPage(req, res, next) {
     let id = req.params.id;
     question_1.default.findById(id, {}, {}, (err, questionToUpdate) => {
@@ -149,7 +220,7 @@ function DisplayUpdateQuestionPage(req, res, next) {
             res.end(err);
         }
         console.log(questionToUpdate);
-        res.render('index', { title: 'Update Question', page: 'update-question', list2: questionToUpdate });
+        res.render('index', { title: 'Update Question', page: 'update-question-mc', list2: questionToUpdate });
     });
 }
 exports.DisplayUpdateQuestionPage = DisplayUpdateQuestionPage;

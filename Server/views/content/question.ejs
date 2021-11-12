@@ -14,7 +14,9 @@
   
         <hr/>
 
-        <a href="/add-question/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Question</a>
+        <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Multiple Choice Question</a>
+        <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add T/F Question</a>
+        <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a>
 
         <br>
         <br> 
@@ -23,6 +25,9 @@
         <form class="px-4" action="">
           <p class="text-left">
             <th scope="row"><%= count + 1 %>.</th>
+
+            <% if(list2[count].questionType == "Multiple Choice") { %>
+           
             <strong><%= list2[count].questionText %></strong>
             <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
             <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
@@ -32,34 +37,68 @@
             <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
             <label class="form-check-label" for="radio2Example1">
               <%= list2[count].first_Choice %>
-            </label>
-            
+            </label>           
           </div>
+
           <div class="form-check mb-2">
             <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
             <label class="form-check-label" for="radio2Example2">
               <%= list2[count].second_Choice %>
             </label>
           </div>
+
           <div class="form-check mb-2">
             <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
             <label class="form-check-label" for="radio2Example3">
               <%= list2[count].third_Choice %>
             </label>
           </div>
+
           <div class="form-check mb-2">
             <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
             <label class="form-check-label" for="radio2Example4">
               <%= list2[count].fourth_Choice %>
             </label>
           </div>
-  
+          <% } else if(list2[count].questionType == "True/False"){ %>
+          <strong><%= list2[count].questionText %></strong>
+          <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
+          <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
+        </p>
+
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+          <label class="form-check-label" for="radio2Example1">
+            True
+          </label>
+          </div>
+
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+          <label class="form-check-label" for="radio2Example1">
+              False
+          </label>
+          </div>
+
+          <% } else {%> 
+          <strong><%= list2[count].questionText %></strong>
+          <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
+          <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
+        </p>
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+            <% } %>
+
         </form>
-        <% } %>
+
+        <% } %> 
+
 
 
       </div>
-      <div class="card-footer text-end">
+      <div class="card-footer text-end" >
         <button type="button" class="btn btn-primary">Submit</button>
       </div>
     </div>

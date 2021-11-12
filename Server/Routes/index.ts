@@ -7,8 +7,10 @@ export default router;
 import { DisplayHomePage, DisplaySurveyListPage, 
     DisplayAddSurveyPage, ProcessAddSurveyPage, DisplayUpdateSurveyPage, 
     ProcessUpdateSurveyPage, ProcessDeleteSurveyPage, DisplayQuestionPage,
-    DisplayAddQuestionPage, ProcessAddQuestionPage, DisplayUpdateQuestionPage,
-    ProcessUpdateQuestionPage, ProcessDeleteQuestionPage } from '../Controller/index';
+    DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
+    ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
+    ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage
+    } from '../Controller/index';
 
 /* GET home page. */
 router.get('/', DisplayHomePage);
@@ -37,16 +39,28 @@ router.get('/delete-survey/:id',  ProcessDeleteSurveyPage);
 /*GET question page */
 router.get('/question/:id', DisplayQuestionPage);
 
-/*GET display /add-question/:id page */
-router.get('/add-question/:id', DisplayAddQuestionPage);
+/*GET display /add-question-mc/:id page */
+router.get('/add-question-mc/:id', DisplayAddMCQuestionPage);
 
-/*Post display /add-question/:id page */
-router.post('/add-question/:id', ProcessAddQuestionPage);
+/*Post display /add-question-mc/:id page */
+router.post('/add-question-mc/:id', ProcessAddMCQuestionPage);
 
-/*GET display /add-question/:id page */
+/*GET display /add-question-tf/:id page */
+router.get('/add-question-tf/:id', DisplayAddTFQuestionPage);
+
+/*Post display /add-question-tf/:id page */
+router.post('/add-question-tf/:id', ProcessAddTFQuestionPage);
+
+/*GET display /add-question-sa/:id page */
+router.get('/add-question-sa/:id', DisplayAddSAQuestionPage);
+
+/*Post display /add-question-sa/:id page */
+router.post('/add-question-sa/:id', ProcessAddSAQuestionPage);
+
+/*GET display /edit-question/:id page */
 router.get('/update-question/:id', DisplayUpdateQuestionPage);
 
-/*Post display /add-question/:id page */
+/*Post display /edit-question/:id page */
 router.post('/update-question/:id', ProcessUpdateQuestionPage);
 
 /*GET Process /question/delete/:id */

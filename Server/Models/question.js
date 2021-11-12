@@ -13,6 +13,7 @@ const QuestionSchema = new Schema({
     second_Choice: String,
     third_Choice: String,
     fourth_Choice: String,
+    option_Text: String,
     created: {
         type: Date,
         default: Date.now()
