@@ -7,6 +7,9 @@ const SurveySchema = new Schema
 ({
     title: String,
     author: String,
+    start_Date: Date,
+    end_Date: Date,
+    isActive: Boolean,
     created: 
     {
         type: String,

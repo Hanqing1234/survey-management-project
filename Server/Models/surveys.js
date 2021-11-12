@@ -9,6 +9,9 @@ const Schema = mongoose_1.default.Schema;
 const SurveySchema = new Schema({
     title: String,
     author: String,
+    start_Date: Date,
+    end_Date: Date,
+    isActive: Boolean,
     created: {
         type: String,
         default: (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD HH:mm:ss')
