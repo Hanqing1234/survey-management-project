@@ -25,5 +25,6 @@ router.post('/add-question-sa/:id', index_1.ProcessAddSAQuestionPage);
 router.get('/update-question/:id', index_1.DisplayUpdateQuestionPage);
 router.post('/update-question/:id', index_1.ProcessUpdateQuestionPage);
 router.get('/delete-question/:id', index_1.ProcessDeleteQuestionPage);
+router.get('/date', index_1.DisplayExpiryDatePage);
 module.exports = router;
 //# sourceMappingURL=index.js.map

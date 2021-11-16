@@ -11,7 +11,7 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="name">Author</span>
-            <input id="author" type="text" class="form-control" placeholder="Number" aria-label="Number" aria-describedby="Contact Number"
+            <input id="author" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="Contact Number"
             name="author" value="<%= list.author%>" required>
         </div> 
 
@@ -19,7 +19,7 @@
         <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
         <a href="/survey-list/delete/<%= list._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
         <% } else { %>
-       <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Add</button>
+       <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Next</button>
        <% } %>
 
         <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>

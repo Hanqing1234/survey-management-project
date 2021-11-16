@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
+exports.DisplayExpiryDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 function DisplayHomePage(req, res, next) {
@@ -30,13 +30,15 @@ function ProcessAddSurveyPage(req, res, next) {
         "title": req.body.name,
         "author": req.body.author,
     });
+    console.log(newSurvey);
     surveys_1.default.create(newSurvey, (err) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/survey-list');
+        console.log(newSurvey);
     });
+    res.redirect('/date');
 }
 exports.ProcessAddSurveyPage = ProcessAddSurveyPage;
 function ProcessDeleteSurveyPage(req, res, next) {
@@ -278,4 +280,15 @@ function ProcessDeleteQuestionPage(req, res, next) {
     });
 }
 exports.ProcessDeleteQuestionPage = ProcessDeleteQuestionPage;
+function DisplayExpiryDatePage(req, res, next) {
+    surveys_1.default.find((err, surveyCollection) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(surveyCollection);
+        res.render('index', { title: 'Survey List', page: 'date', list: surveyCollection });
+    });
+}
+exports.DisplayExpiryDatePage = DisplayExpiryDatePage;
 //# sourceMappingURL=index.js.map

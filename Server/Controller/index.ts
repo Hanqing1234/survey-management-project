@@ -44,7 +44,7 @@ export function ProcessAddSurveyPage(req: Request, res: Response, next: NextFunc
     "title": req.body.name,
     "author": req.body.author,
   });
-
+  console.log(newSurvey);
   // db.list.insert({list data is here...})
   SurveyList.create(newSurvey, (err: NativeError) => 
   {
@@ -53,9 +53,9 @@ export function ProcessAddSurveyPage(req: Request, res: Response, next: NextFunc
       console.error(err);
       res.end(err);
     }
-
-    res.redirect('/survey-list');
+    console.log(newSurvey);
   });
+  res.redirect('/date');
 }
 
 // Process Delete page
@@ -437,4 +437,24 @@ export function ProcessDeleteQuestionPage(req: Request, res: Response, next: Nex
         res.redirect('/question/' + surveyId);
       });
   });
+}
+
+// Display question page
+export function DisplayExpiryDatePage(req: Request, res: Response, next: NextFunction): void
+{
+    
+    //db.list.find()
+    SurveyList.find((err, surveyCollection) =>
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        } 
+
+        console.log(surveyCollection);
+        res.render('index', { title: 'Survey List', page: 'date', list: surveyCollection });      
+        
+    });   
+    
 }

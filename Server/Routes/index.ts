@@ -9,7 +9,8 @@ import { DisplayHomePage, DisplaySurveyListPage,
     ProcessUpdateSurveyPage, ProcessDeleteSurveyPage, DisplayQuestionPage,
     DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
     ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
-    ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage
+    ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,
+    DisplayExpiryDatePage
     } from '../Controller/index';
 
 /* GET home page. */
@@ -65,5 +66,9 @@ router.post('/update-question/:id', ProcessUpdateQuestionPage);
 
 /*GET Process /question/delete/:id */
 router.get('/delete-question/:id',  ProcessDeleteQuestionPage);
+
+/*GET display /expiry-date/:id page */
+router.get('/date', DisplayExpiryDatePage);
+
 
 module.exports = router;
