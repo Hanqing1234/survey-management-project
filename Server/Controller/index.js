@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DisplayExpiryDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
+exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.DisplayExpiryDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.DisplayQuestionPage = exports.ProcessUpdateSurveyPage = exports.DisplayUpdateSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = exports.DisplayHomePage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 function DisplayHomePage(req, res, next) {
@@ -16,7 +16,6 @@ function DisplaySurveyListPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log(surveyCollection);
         res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection });
     });
 }
@@ -43,6 +42,12 @@ function ProcessAddSurveyPage(req, res, next) {
 exports.ProcessAddSurveyPage = ProcessAddSurveyPage;
 function ProcessDeleteSurveyPage(req, res, next) {
     let id = req.params.id;
+    question_1.default.deleteMany({ survey_id: id }, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+    });
     surveys_1.default.remove({ _id: id }, (err) => {
         if (err) {
             console.error(err);
@@ -82,7 +87,6 @@ function ProcessUpdateSurveyPage(req, res, next) {
 exports.ProcessUpdateSurveyPage = ProcessUpdateSurveyPage;
 function DisplayQuestionPage(req, res, next) {
     let id = req.params.id;
-    console.log(id);
     surveys_1.default.findById(id, {}, {}, (err, questionToAdd) => {
         if (err) {
             console.error(err);
@@ -101,20 +105,13 @@ exports.DisplayQuestionPage = DisplayQuestionPage;
 function DisplayAddMCQuestionPage(req, res, next) {
     let id = req.params.id;
     console.log(id);
-    console.log("DisplayAddQuestionPage");
-    surveys_1.default.findById(id, {}, {}, (err, questionToAdd) => {
+    question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
         console.log(questionToAdd);
-        question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd2) => {
-            if (err) {
-                console.error(err);
-                res.end(err);
-            }
-            res.render('index', { title: 'Add Multiple Choice Question', page: 'update-question-mc', list: questionToAdd, list2: questionToAdd2 });
-        });
+        res.render('index', { title: 'Add Multiple Choice Question', page: 'update-question-mc', list: questionToAdd, id: id });
     });
 }
 exports.DisplayAddMCQuestionPage = DisplayAddMCQuestionPage;
@@ -226,7 +223,7 @@ function DisplayUpdateQuestionPage(req, res, next) {
             res.render('index', { title: 'Update Question', page: 'update-question-tf', list2: questionToUpdate });
         }
         else if (surveyId == "Multiple C") {
-            res.render('index', { title: 'Update Question', page: 'update-question-mc', list2: questionToUpdate });
+            res.render('index', { title: 'Update Question', page: 'update-question-mc', list: questionToUpdate });
         }
         else {
             res.render('index', { title: 'Update Question', page: 'update-question-sa', list2: questionToUpdate });
@@ -291,4 +288,20 @@ function DisplayExpiryDatePage(req, res, next) {
     });
 }
 exports.DisplayExpiryDatePage = DisplayExpiryDatePage;
+function DisplayTakeSurveyPage(req, res, next) {
+    let id = req.params.id;
+    question_1.default.find({ survey_id: id }, {}, {}, (err, questionToAdd) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.render('index', { title: 'Take Survey', page: 'take-survey', list: questionToAdd });
+    });
+}
+exports.DisplayTakeSurveyPage = DisplayTakeSurveyPage;
+function ProcessTakeSurveyPage(req, res, next) {
+    let id = req.params.id;
+    console.log("Thanks for taking survey");
+}
+exports.ProcessTakeSurveyPage = ProcessTakeSurveyPage;
 //# sourceMappingURL=index.js.map

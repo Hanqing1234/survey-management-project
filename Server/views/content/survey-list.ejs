@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let count=0; count < list.length; count++) { %>
+                <% for(let count = 0; count < list.length; count++) { %>
                     <!-- Repeatable Row Template -->
                     <tr>
                         <th scope="row"><%= count + 1 %></th>
@@ -25,7 +25,7 @@
                         <td><%= list[count].created %></td>  
                         <td><%= list[count].author %></td>    
                         <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> View Survey</a></td>                                                          
-                        <td class="text-center"><a href="/survey-list/update-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Update</a></td>
+                        <td class="text-center"><a href="/take-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>
                         <td class="text-center"><a href="/survey-list/delete-survey/<%= list[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
                     </tr>
                 <% } %>    

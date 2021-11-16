@@ -26,5 +26,7 @@ router.get('/update-question/:id', index_1.DisplayUpdateQuestionPage);
 router.post('/update-question/:id', index_1.ProcessUpdateQuestionPage);
 router.get('/delete-question/:id', index_1.ProcessDeleteQuestionPage);
 router.get('/date', index_1.DisplayExpiryDatePage);
+router.get('/take-survey/:id', index_1.DisplayTakeSurveyPage);
+router.post('/take-survey/:id', index_1.ProcessTakeSurveyPage);
 module.exports = router;
 //# sourceMappingURL=index.js.map

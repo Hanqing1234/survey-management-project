@@ -52,6 +52,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, '../../node_modu
 app.use('/', index_1.default);
 app.use('/survey-list', index_1.default);
 app.use('/question', index_1.default);
+app.use('/take-survey', index_1.default);
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));
 });

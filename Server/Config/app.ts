@@ -44,6 +44,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 app.use('/', indexRouter);
 app.use('/survey-list', indexRouter);
 app.use('/question', indexRouter);
+app.use('/take-survey', indexRouter);
 
 
 // catch 404 and forward to error handler
