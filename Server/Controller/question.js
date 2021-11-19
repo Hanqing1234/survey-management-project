@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.DisplayExpiryDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.ProcessQuestionPage = exports.DisplayQuestionPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
+const response_1 = __importDefault(require("../Models/response"));
 function DisplayQuestionPage(req, res, next) {
     let id = req.params.id;
     surveys_1.default.findById(id, {}, {}, (err, questionToAdd) => {
@@ -235,8 +236,19 @@ function DisplayTakeSurveyPage(req, res, next) {
 }
 exports.DisplayTakeSurveyPage = DisplayTakeSurveyPage;
 function ProcessTakeSurveyPage(req, res, next) {
-    console.log(req.body);
+    let responseJson = JSON.stringify(req.body, null, 2);
+    console.log(responseJson);
     console.log("Thanks for taking survey");
+    let newResponse = new response_1.default({
+        answerText: responseJson,
+        surveyId: req.params.id
+    });
+    response_1.default.create(newResponse, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+    });
 }
 exports.ProcessTakeSurveyPage = ProcessTakeSurveyPage;
 //# sourceMappingURL=question.js.map

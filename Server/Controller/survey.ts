@@ -46,7 +46,7 @@ export function ProcessAddSurveyPage(req: Request, res: Response, next: NextFunc
       console.error(err);
       res.end(err);
     }
-    console.log(newSurvey);
+    
   });
   res.redirect('/date');
 }

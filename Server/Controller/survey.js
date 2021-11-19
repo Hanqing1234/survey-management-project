@@ -31,7 +31,6 @@ function ProcessAddSurveyPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log(newSurvey);
     });
     res.redirect('/date');
 }

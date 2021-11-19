@@ -4,6 +4,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+//modules for cors
+import cors from 'cors';
+
 import indexRouter from '../Routes/index';
 
 const app = express();
@@ -14,6 +17,7 @@ import  mongoose, {mongo} from 'mongoose';
 
 //DB Configuration
 import * as DBConfig from './db';
+import bodyParser from 'body-parser';
 
 const newLocal = (DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI;
 mongoose.connect(newLocal);
@@ -40,6 +44,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+//add support for cors object
+app.use(cors());
+
+//add body parser
+app.use(bodyParser.urlencoded({extended:true})) ;
+app.use(bodyParser.json()) ;
 
 app.use('/', indexRouter);
 app.use('/survey-list', indexRouter);

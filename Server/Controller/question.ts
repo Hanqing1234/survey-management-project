@@ -3,8 +3,9 @@ import express, {Request, Response, NextFunction} from 'express';
 //get a reference to the Model Class
 import SurveyList from '../Models/surveys';
 import QuestionList from '../Models/question';
+import ResponseList from '../Models/response';
 
-import { NativeError } from 'mongoose';
+import { AnyObject, NativeError } from 'mongoose';
 // Display Edit question page
 export function DisplayQuestionPage(req: Request, res: Response, next: NextFunction): void
 {
@@ -365,17 +366,25 @@ export function DisplayTakeSurveyPage(req: Request, res: Response, next: NextFun
 // Process take-survey page
 export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFunction): void
 {
-  // QuestionList.find({survey_id: req.params.id}, {}, {}, (err,questionToFind) =>
-  // {
-  //   if(err)
-  //   {
-  //     console.error(err);
-  //     res.end(err);
-  //   }
-  //   console.log(questionToFind);
-  // });
-  
-  console.log(req.body);
+  let responseJson = JSON.stringify(req.body, null, 2);
+
+  console.log(responseJson);
   console.log("Thanks for taking survey");
-  
+
+  //let newResponse = new ResponseList(responseJson);
+  let newResponse = new ResponseList
+  ({
+    answerText:responseJson,
+    surveyId:req.params.id
+  });
+
+  ResponseList.create(newResponse , (err: NativeError) => 
+  {
+    if(err)
+    {
+      console.error(err);
+      res.end(err);
+    }
+  });
+
 }
