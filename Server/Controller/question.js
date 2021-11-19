@@ -240,8 +240,8 @@ function ProcessTakeSurveyPage(req, res, next) {
     console.log(responseJson);
     console.log("Thanks for taking survey");
     let newResponse = new response_1.default({
-        answerText: responseJson,
-        surveyId: req.params.id
+        responseText: responseJson,
+        survey_id: req.params.id
     });
     response_1.default.create(newResponse, (err) => {
         if (err) {

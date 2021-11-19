@@ -374,8 +374,8 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
   //let newResponse = new ResponseList(responseJson);
   let newResponse = new ResponseList
   ({
-    answerText:responseJson,
-    surveyId:req.params.id
+    responseText:responseJson,
+    survey_id:req.params.id
   });
 
   ResponseList.create(newResponse , (err: NativeError) => 

@@ -3,9 +3,8 @@ import moment from "moment";
 const Schema = mongoose.Schema; // alias for mongoose Schema
 
 const ResponseSchema = new Schema
-({
-    questionText: String,
-    answerText: String,
+({   
+    responseText: String,
     survey_id: String,
     
     created: 

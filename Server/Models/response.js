@@ -7,8 +7,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const moment_1 = __importDefault(require("moment"));
 const Schema = mongoose_1.default.Schema;
 const ResponseSchema = new Schema({
-    questionText: String,
-    answerText: String,
+    responseText: String,
     survey_id: String,
     created: {
         type: String,
