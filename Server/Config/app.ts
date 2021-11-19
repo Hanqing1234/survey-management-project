@@ -4,6 +4,14 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+//components for authentication
+import session from 'express-session';
+import passport from 'passport';
+import passportLocal from 'passport-local';
+let localStrategy = passportLocal.Strategy;
+import User from '../Models/user';
+import flash from 'connect-flash';
+
 //modules for cors
 import cors from 'cors';
 
@@ -44,6 +52,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+//create sessions
+app.use(session({
+  secret: DBConfig.Secret,
+  saveUninitialized: false,
+  resave: false
+}));
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //add support for cors object
 app.use(cors());

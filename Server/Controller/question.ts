@@ -25,7 +25,7 @@ export function DisplayQuestionPage(req: Request, res: Response, next: NextFunct
               res.end(err);
             
           }
-          res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2});      
+          res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2, displayName: req.user});      
         });
     });   
 }

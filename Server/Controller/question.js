@@ -19,7 +19,7 @@ function DisplayQuestionPage(req, res, next) {
                 console.error(err);
                 res.end(err);
             }
-            res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2 });
+            res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2, displayName: req.user });
         });
     });
 }
