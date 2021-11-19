@@ -58,32 +58,33 @@
           </p>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+            <input class="form-check-input" type="radio" name="McForm<%= count + 1 %>" id="radio2Example" value="Example1" />
             <label class="form-check-label" for="radio2Example1">
               <%= list2[count].first_Choice %>
             </label>           
           </div>
 
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
+            <input class="form-check-input" type="radio" name="McForm<%= count + 1 %>" id="radio2Example" value="Example2"/>
             <label class="form-check-label" for="radio2Example2">
               <%= list2[count].second_Choice %>
             </label>
           </div>
 
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
+            <input class="form-check-input" type="radio" name="McForm<%= count + 1 %>" id="radio2Example" value="Example3"/>
             <label class="form-check-label" for="radio2Example3">
               <%= list2[count].third_Choice %>
             </label>
           </div>
 
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
+            <input class="form-check-input" type="radio" name="McForm<%= count + 1 %>" id="radio2Example" value="Example4"/>
             <label class="form-check-label" for="radio2Example4">
               <%= list2[count].fourth_Choice %>
             </label>
-          </div>
+          </div>      
+          
           <% } else if(list2[count].questionType == "True/False"){ %>
           <strong><%= list2[count].questionText %></strong>
           <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
@@ -91,14 +92,14 @@
         </p>
 
         <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+          <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
           <label class="form-check-label" for="radio2Example1">
             True
           </label>
           </div>
 
         <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+          <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
           <label class="form-check-label" for="radio2Example1">
               False
           </label>
@@ -110,14 +111,14 @@
           <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 
         </p>
           <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea<%= count + 1 %>" rows="3"></textarea>
           </div>
             <% } %>
         <% } %> 
 
       </div>
       <div class="card-footer text-end" >
-         <a href="/survey-list" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Complete</a>
+         <button type="submit" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Complete</button>
       </div>
       </div>
       

@@ -4,16 +4,16 @@ const router = express.Router();
 export default router;
 
 //instantiate an object of type index controller
-import { DisplayHomePage, DisplaySurveyListPage, 
-    DisplayAddSurveyPage, ProcessAddSurveyPage, DisplayUpdateSurveyPage, 
-    ProcessUpdateSurveyPage, ProcessDeleteSurveyPage, DisplayQuestionPage,
-    DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
-    ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
-    ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,
-    DisplayExpiryDatePage, DisplayTakeSurveyPage, ProcessTakeSurveyPage
-    } from '../Controller/index';
+import { DisplayHomePage} from '../Controller/index';
 
-/* GET home page. */
+import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, DisplayUpdateSurveyPage, ProcessDeleteSurveyPage} from '../Controller/survey';
+
+import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
+        ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
+        ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,
+        DisplayExpiryDatePage, DisplayTakeSurveyPage, ProcessTakeSurveyPage
+        } from '../Controller/question';    
+    /* GET home page. */
 router.get('/', DisplayHomePage);
 
 /* GET home page. */
@@ -28,17 +28,14 @@ router.get('/add-survey', DisplayAddSurveyPage);
 /*POST process /survey-list/add page */
 router.post('/add-survey',  ProcessAddSurveyPage);
 
-/*GET display update/:id page - with /contacts-list/update:id */
-router.get('/update-survey/:id', DisplayUpdateSurveyPage);
-
-/*POST process /contacts-list/update/:id page */
-router.post('/update-survey/:id',  ProcessUpdateSurveyPage);
-
 /*GET Process /contacts-list/delete/:id */
 router.get('/delete-survey/:id',  ProcessDeleteSurveyPage);
 
 /*GET question page */
 router.get('/question/:id', DisplayQuestionPage);
+
+/*POST process /contacts-list/update/:id page */
+router.post('/question/:id',  ProcessQuestionPage);
 
 /*GET display /add-question-mc/:id page */
 router.get('/add-question-mc/:id', DisplayAddMCQuestionPage);

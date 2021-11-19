@@ -26,28 +26,28 @@
             </p>
     
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example1" value="<%= list[count].first_Choice %>"/>
               <label class="form-check-label" for="radio2Example1">
                 <%= list[count].first_Choice %>
               </label>           
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example2" value="<%= list[count].second_Choice %>"/>
               <label class="form-check-label" for="radio2Example2">
                 <%= list[count].second_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example3" value="<%= list[count].third_Choice %>"/>
               <label class="form-check-label" for="radio2Example3">
                 <%= list[count].third_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example4" value="<%= list[count].fourth_Choice %>"/>
               <label class="form-check-label" for="radio2Example4">
                 <%= list[count].fourth_Choice %>
               </label>
@@ -57,14 +57,14 @@
           </p>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+            <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example1" value="True"/>
             <label class="form-check-label" for="radio2Example1">
               True
             </label>
             </div>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
+            <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example1" value="False"/>
             <label class="form-check-label" for="radio2Example1">
                 False
             </label>
@@ -74,13 +74,12 @@
             <strong><%= list[count].questionText %></strong>
           </p>
             <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="<%= list[count].questionText %>"></textarea>
             </div>
               <% } %>
           </form>
           <% } %> 
-  
-  
+   
         </div>
         <div class="card-footer text-end" >
            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit fa-lg"></i> Complete</a>
