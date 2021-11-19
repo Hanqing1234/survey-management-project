@@ -23,7 +23,7 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: req.user });      
+        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: req.user ? req.user.displayName: ''});      
     });
 }
 

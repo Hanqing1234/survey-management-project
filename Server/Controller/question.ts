@@ -6,6 +6,10 @@ import QuestionList from '../Models/question';
 import ResponseList from '../Models/response';
 
 import { AnyObject, NativeError } from 'mongoose';
+import passport from 'passport';
+import { OutgoingMessage } from 'http';
+import { UnavailableForLegalReasons } from 'http-errors';
+
 // Display Edit question page
 export function DisplayQuestionPage(req: Request, res: Response, next: NextFunction): void
 {
