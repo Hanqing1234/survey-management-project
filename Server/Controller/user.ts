@@ -5,9 +5,20 @@ import passport from 'passport';
 import { OutgoingMessage } from 'http';
 import { UnavailableForLegalReasons } from 'http-errors';
 
+
 import User from '../Models/user';
 
+
 // Init auth check for protected pages - John
+export function UserDisplayName(req: Request): string
+{
+    if(req.user)
+    {
+        let user = req.user as UserDocument;
+        return user.displayName.toString();
+    }
+    return '';
+}
 export function requireAuth(req: Request, res: Response, next: NextFunction)
 {
     if(!req.isAuthenticated())
@@ -20,7 +31,11 @@ export function requireAuth(req: Request, res: Response, next: NextFunction)
 // display sign-in page
 export function DisplaySignInPage(req: Request, res: Response, next: NextFunction): void
 {
-  res.render('index', {title: 'Sign In', page: 'sign-in'});
+  if(!req.user)
+    {
+        return res.render('index', {title: 'Sign In', page: 'sign-in', messages: req.flash('signInMessage'), displayName: UserDisplayName(req)});
+    }
+    return res.redirect('/survey-list');
 }
 
 export function ProcessSignInPage(req: Request, res: Response, next: NextFunction): void
@@ -34,7 +49,8 @@ export function ProcessSignInPage(req: Request, res: Response, next: NextFunctio
     }
     if(!user)
     {
-      req.flash('signInMessage', 'Authentication Error');
+      req.flash('signInMessage', 'Username or Password is not correct, or User does not exist');
+      console.log("zzz");
       return res.redirect('/sign-in');
     }
 
@@ -64,7 +80,7 @@ export function ProcessSignOutPage(req: Request, res: Response, next: NextFuncti
 // displays registration page 
 export function DisplayRegisterPage(req: Request, res: Response, next: NextFunction): void
 {
-    res.render('index', { title: 'Register', page: 'register'  });
+    res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) });
 }
 
 // processes creation of new user into users db collection

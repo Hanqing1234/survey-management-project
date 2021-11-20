@@ -10,6 +10,8 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 let localStrategy = passportLocal.Strategy;
 import User from '../Models/user';
+
+// module for auth messaging and error management
 import flash from 'connect-flash';
 
 //modules for cors
@@ -60,8 +62,10 @@ app.use(session({
   resave: false
 }));
 
+//initialize connect-flas
 app.use(flash());
 
+//initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 

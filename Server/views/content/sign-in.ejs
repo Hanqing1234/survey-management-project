@@ -7,6 +7,14 @@
                     <div class="card-body p-5 text-center">
 
             <h1 class="display-4"><i class="fas fa-user"></i> Sign In</h1>
+
+             <!-- message area -->
+             <% if(messages.length > 0) { %>
+                <div id="messageArea" class="alert alert-danger">
+                  <%= messages %>
+                </div>
+                <% } %>
+                
             <form id="loginForm" method="POST" novalidate >
 
                 <div class="form-outline mb-4">

@@ -24,7 +24,7 @@
                 class="fas fa-list fa-lg"></i> Survey List</a>
           </li>  
 
-          <% if(typeof displayName == 'string' && displayName) { %>
+          <% if(displayName) { %>
             <li class="navbar-text"><i class="fas fa-user-circle"></i></i> Hi, <%= displayName %></li>
             <li class="nav-item"><a href="/sign-out" class="nav-link">
                 <i class="fas fa-lg fa-sign-out-alt"></i> Sign Out</a></li>

@@ -1,10 +1,17 @@
-
-
 <div class="row justify-content-lg-center g-3" style="margin: 50px;">
     <h1 style="text-align: center"><%= title %> </h1>
-    <div class="form-group" style="padding-top:80px">
+    <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+    <div class="form-group" style="padding-top:30px">
+        <label for="startDate">Start date:</label><br>
+        <input type="date" id="startDate" name="startDate">
+        <br>
+        <br>
         <label for="endDate">Expiration date:</label><br>
         <input type="date" id="endDate" name="endDate">
-        <a href="/question/<%= list[list.length - 1]._id %>" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Next</a>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Next</button>
+        <a href="/survey-list" class="btn btn-danger"><i class="fas fa-backspace"></i> Cancel</a>
     </div>
+    </form>
 </div>

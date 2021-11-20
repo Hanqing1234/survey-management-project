@@ -3,9 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessSignOutPage = exports.ProcessSignInPage = exports.DisplaySignInPage = exports.requireAuth = void 0;
+exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessSignOutPage = exports.ProcessSignInPage = exports.DisplaySignInPage = exports.requireAuth = exports.UserDisplayName = void 0;
 const passport_1 = __importDefault(require("passport"));
 const user_1 = __importDefault(require("../Models/user"));
+function UserDisplayName(req) {
+    if (req.user) {
+        let user = req.user;
+        return user.displayName.toString();
+    }
+    return '';
+}
+exports.UserDisplayName = UserDisplayName;
 function requireAuth(req, res, next) {
     if (!req.isAuthenticated()) {
         return res.redirect('/sign-in');
@@ -14,7 +22,10 @@ function requireAuth(req, res, next) {
 }
 exports.requireAuth = requireAuth;
 function DisplaySignInPage(req, res, next) {
-    res.render('index', { title: 'Sign In', page: 'sign-in' });
+    if (!req.user) {
+        return res.render('index', { title: 'Sign In', page: 'sign-in', messages: req.flash('signInMessage'), displayName: UserDisplayName(req) });
+    }
+    return res.redirect('/survey-list');
 }
 exports.DisplaySignInPage = DisplaySignInPage;
 function ProcessSignInPage(req, res, next) {
@@ -24,7 +35,8 @@ function ProcessSignInPage(req, res, next) {
             return next(err);
         }
         if (!user) {
-            req.flash('signInMessage', 'Authentication Error');
+            req.flash('signInMessage', 'Username or Password is not correct, or User does not exist');
+            console.log("zzz");
             return res.redirect('/sign-in');
         }
         req.login(user, (err) => {
@@ -44,7 +56,7 @@ function ProcessSignOutPage(req, res, next) {
 }
 exports.ProcessSignOutPage = ProcessSignOutPage;
 function DisplayRegisterPage(req, res, next) {
-    res.render('index', { title: 'Register', page: 'register' });
+    res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) });
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;
 function ProcessRegisterPage(req, res, next) {

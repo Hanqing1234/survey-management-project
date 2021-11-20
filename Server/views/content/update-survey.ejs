@@ -15,6 +15,7 @@
             name="author" value="<%= list.author%>" required>
         </div> 
 
+        
         <% if (title == "Update") { %>
         <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
         <a href="/survey-list/delete/<%= list._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>

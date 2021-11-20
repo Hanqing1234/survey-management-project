@@ -6,12 +6,12 @@ export default router;
 //instantiate an object of type index controller
 import { DisplayHomePage} from '../Controller/index';
 
-import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, ProcessDeleteSurveyPage} from '../Controller/survey';
+import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, ProcessDeleteSurveyPage, DisplayTakeSurveyPage, ProcessTakeSurveyPage} from '../Controller/survey';
 
 import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
         ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
         ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,
-        DisplayExpiryDatePage, DisplayTakeSurveyPage, ProcessTakeSurveyPage 
+        DisplayExpiryDatePage , ProcessExpiryDatePage
         } from '../Controller/question';    
 
 import {DisplaySignInPage, ProcessSignInPage, ProcessSignOutPage, 
@@ -38,10 +38,10 @@ router.get('/register', DisplayRegisterPage);
 router.post('/register', ProcessRegisterPage);
 
 /* GET contact list page. */
-router.get('/survey-list', requireAuth, DisplaySurveyListPage);
+router.get('/survey-list',  DisplaySurveyListPage);
 
 /*GET display /survey-list/add page */
-router.get('/add-survey', DisplayAddSurveyPage);
+router.get('/add-survey', requireAuth,DisplayAddSurveyPage);
 
 /*POST process /survey-list/add page */
 router.post('/add-survey', requireAuth, ProcessAddSurveyPage);
@@ -53,25 +53,25 @@ router.get('/delete-survey/:id', requireAuth, ProcessDeleteSurveyPage);
 router.get('/question/:id', requireAuth,DisplayQuestionPage);
 
 /*POST process /contacts-list/update/:id page */
-router.post('/question/:id',  ProcessQuestionPage);
+router.post('/question/:id', requireAuth, ProcessQuestionPage);
 
 /*GET display /add-question-mc/:id page */
-router.get('/add-question-mc/:id', DisplayAddMCQuestionPage);
+router.get('/add-question-mc/:id', requireAuth,DisplayAddMCQuestionPage);
 
 /*Post display /add-question-mc/:id page */
-router.post('/add-question-mc/:id', ProcessAddMCQuestionPage);
+router.post('/add-question-mc/:id', requireAuth,ProcessAddMCQuestionPage);
 
 /*GET display /add-question-tf/:id page */
-router.get('/add-question-tf/:id', DisplayAddTFQuestionPage);
+router.get('/add-question-tf/:id', requireAuth,DisplayAddTFQuestionPage);
 
 /*Post display /add-question-tf/:id page */
-router.post('/add-question-tf/:id', ProcessAddTFQuestionPage);
+router.post('/add-question-tf/:id', requireAuth,ProcessAddTFQuestionPage);
 
 /*GET display /add-question-sa/:id page */
-router.get('/add-question-sa/:id', DisplayAddSAQuestionPage);
+router.get('/add-question-sa/:id', requireAuth,DisplayAddSAQuestionPage);
 
 /*Post display /add-question-sa/:id page */
-router.post('/add-question-sa/:id', ProcessAddSAQuestionPage);
+router.post('/add-question-sa/:id', requireAuth,ProcessAddSAQuestionPage);
 
 /*GET display /edit-question/:id page */
 router.get('/update-question/:id', requireAuth, DisplayUpdateQuestionPage);
@@ -83,7 +83,10 @@ router.post('/update-question/:id', requireAuth,ProcessUpdateQuestionPage);
 router.get('/delete-question/:id',  requireAuth,ProcessDeleteQuestionPage);
 
 /*GET display /expiry-date/:id page */
-router.get('/date', DisplayExpiryDatePage);
+router.get('/date', requireAuth,DisplayExpiryDatePage);
+
+/*POST display /expiry-date/:id page */
+router.post('/date', requireAuth,ProcessExpiryDatePage);
 
 /*GET display /take-survey/:id page */
 router.get('/take-survey/:id', DisplayTakeSurveyPage);

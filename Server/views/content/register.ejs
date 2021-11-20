@@ -8,6 +8,13 @@
 
         <div class="login" id="contentArea">
             <h1 class="display-4"><i class="fas fa-user"></i> Register</h1>
+
+            <% if(messages.length > 0) { %>
+                <div id="messageArea" class="alert alert-danger">
+                  <%= messages %>
+                </div>
+              <% } %>
+              
             <form id="registerForm" method="POST" novalidate>
 
                 <div class="form-group mt-4">
@@ -55,9 +62,9 @@
                 <a href="/" id="cancelButton" class="btn btn-warning btn-lg"><i class="fas fa-undo-alt"></i> Cancel</a>
                 </div>
             </form>
-                        <hr class="my-4">
-                                <p class="text-center text-muted small">
-            Already have an account? 
+                <hr class="my-4">
+                    <p class="text-center text-muted small">
+                        Already have an account? 
             <a href="/sign-in">Sign in</a>
         </div>
 
