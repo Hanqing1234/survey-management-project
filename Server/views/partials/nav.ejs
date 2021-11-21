@@ -1,18 +1,18 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar fixed-top">
-  <div class="container-fluid">
+  <a class="navbar-brand" href="/"> <img src="/images/TixLogo.jpg" alt="Logo" width="110px" height="80px" style="margin: 3px;"/> </a>
+  <div class="container-fluid" >
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
       
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
 
-          <% if (title == "Home"){ %>
+          <% if (title == "Survey List"){ %>
             <a class="nav-link active" <% } else { %> <a class="nav-link" <% } %> href="/home"><i
               class="fas fa-home fa-lg"></i> Home</a>
         </li>
@@ -31,8 +31,9 @@
             <li class="nav-item"><a href="/sign-out" class="nav-link">
                 <i class="fas fa-lg fa-sign-out-alt"></i> Sign Out</a></li>
             <% } else { %>
-            <li class="nav-item"><a href="/sign-in" class="nav-link">
-                <i class="fas fa-lg fa-sign-in-alt"></i> Sign In</a></li>
+              <% if (title == "Sign In"){ %>
+                <a class="nav-link active" <% } else { %> <a class="nav-link" <% } %> href="/sign-in">
+                 <i class="fas fa-lg fa-sign-in-alt"></i> Sign In</a></li>
             <% } %>
           </ul>
     </div>

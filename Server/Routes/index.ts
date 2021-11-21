@@ -18,10 +18,10 @@ import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, Proce
 import {DisplaySignInPage, ProcessSignInPage, ProcessSignOutPage, 
     DisplayRegisterPage, ProcessRegisterPage, requireAuth} from '../Controller/user'
 /* GET home page. */
-router.get('/', DisplayHomePage);
+router.get('/', DisplaySurveyListPage);
 
 /* GET home page. */
-router.get('/home', DisplayHomePage);
+router.get('/home', DisplaySurveyListPage);
 
 /* GET sign-in display page */
 router.get('/sign-in', DisplaySignInPage);
