@@ -1,6 +1,5 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar fixed-top">
-  <a class="navbar-brand" href="/"> <img src="/images/TixLogo.jpg" alt="Logo" width="110px" height="80px" style="margin: 5px;"/> </a>
+  <a class="navbar-brand" href="/"> <img src="/images/TixLogo.jpg" alt="Logo" width="110px" height="80px" style="margin: 3px;"/> </a>
   <div class="container-fluid" >
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -30,8 +29,9 @@
             <li class="nav-item"><a href="/sign-out" class="nav-link">
                 <i class="fas fa-lg fa-sign-out-alt"></i> Sign Out</a></li>
             <% } else { %>
-            <li class="nav-item"><a href="/sign-in" class="nav-link">
-                <i class="fas fa-lg fa-sign-in-alt"></i> Sign In</a></li>
+              <% if (title == "Sign In"){ %>
+                <a class="nav-link active" <% } else { %> <a class="nav-link" <% } %> href="/sign-in">
+                 <i class="fas fa-lg fa-sign-in-alt"></i> Sign In</a></li>
             <% } %>
           </ul>
     </div>
