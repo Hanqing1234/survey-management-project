@@ -6,7 +6,8 @@ export default router;
 //instantiate an object of type index controller
 import { DisplayHomePage} from '../Controller/index';
 
-import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, ProcessDeleteSurveyPage, DisplayTakeSurveyPage, ProcessTakeSurveyPage} from '../Controller/survey';
+import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, ProcessDeleteSurveyPage,
+     DisplayTakeSurveyPage, ProcessTakeSurveyPage, DisplayAllSurveyListPage} from '../Controller/survey';
 
 import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
         ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
@@ -37,8 +38,11 @@ router.get('/register', DisplayRegisterPage);
 /* POST register page */
 router.post('/register', ProcessRegisterPage);
 
-/* GET contact list page. */
-router.get('/survey-list',  DisplaySurveyListPage);
+/* GET survey list page. */
+router.get('/survey-list', requireAuth, DisplaySurveyListPage);
+
+/* GET all survey list pages */
+router.get('/survey-list-all', DisplayAllSurveyListPage)
 
 /*GET display /survey-list/add page */
 router.get('/add-survey', requireAuth,DisplayAddSurveyPage);

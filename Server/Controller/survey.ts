@@ -6,7 +6,7 @@ import QuestionList from '../Models/question';
 import ResponseList from '../Models/response';
 
 import { NativeError } from 'mongoose';
-import { UserDisplayName } from '../Controller/user';
+import { UserDisplayName } from './user';
 
 export function DisplaySurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
@@ -14,7 +14,7 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
     {     
       SurveyList.find((err, surveyCollection) =>
       {
-         res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: ''});      
+         res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection});      
       }
   )} 
     else
@@ -44,6 +44,14 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
     }
   }
 }
+
+export function DisplayAllSurveyListPage(req: Request | any, res: Response, next: NextFunction): void
+{
+  SurveyList.find((err, surveyCollection) =>
+      {
+         res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req)});      
+      });
+};
 
 // Display Create page
 export function DisplayAddSurveyPage(req: Request, res: Response, next: NextFunction): void

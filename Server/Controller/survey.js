@@ -3,15 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplaySurveyListPage = void 0;
+exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplayAllSurveyListPage = exports.DisplaySurveyListPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 const response_1 = __importDefault(require("../Models/response"));
-const user_1 = require("../Controller/user");
+const user_1 = require("./user");
 function DisplaySurveyListPage(req, res, next) {
     if (!req.user) {
         surveys_1.default.find((err, surveyCollection) => {
-            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: '' });
+            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection });
         });
     }
     else {
@@ -36,6 +36,13 @@ function DisplaySurveyListPage(req, res, next) {
     }
 }
 exports.DisplaySurveyListPage = DisplaySurveyListPage;
+function DisplayAllSurveyListPage(req, res, next) {
+    surveys_1.default.find((err, surveyCollection) => {
+        res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
+    });
+}
+exports.DisplayAllSurveyListPage = DisplayAllSurveyListPage;
+;
 function DisplayAddSurveyPage(req, res, next) {
     res.render('index', { title: 'Add Survey', page: 'update-survey', list: '', displayName: (0, user_1.UserDisplayName)(req) });
 }

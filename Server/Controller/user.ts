@@ -35,7 +35,7 @@ export function DisplaySignInPage(req: Request, res: Response, next: NextFunctio
     {
         return res.render('index', {title: 'Sign In', page: 'sign-in', messages: req.flash('signInMessage'), displayName: UserDisplayName(req)});
     }
-    return res.redirect('/survey-list');
+    return res.redirect('/survey-list-all');
 }
 
 export function ProcessSignInPage(req: Request, res: Response, next: NextFunction): void
@@ -50,7 +50,7 @@ export function ProcessSignInPage(req: Request, res: Response, next: NextFunctio
     if(!user)
     {
       req.flash('signInMessage', 'Username or Password is not correct, or User does not exist');
-      console.log("zzz");
+      
       return res.redirect('/sign-in');
     }
 

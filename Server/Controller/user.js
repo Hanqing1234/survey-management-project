@@ -25,7 +25,7 @@ function DisplaySignInPage(req, res, next) {
     if (!req.user) {
         return res.render('index', { title: 'Sign In', page: 'sign-in', messages: req.flash('signInMessage'), displayName: UserDisplayName(req) });
     }
-    return res.redirect('/survey-list');
+    return res.redirect('/survey-list-all');
 }
 exports.DisplaySignInPage = DisplaySignInPage;
 function ProcessSignInPage(req, res, next) {
@@ -36,7 +36,6 @@ function ProcessSignInPage(req, res, next) {
         }
         if (!user) {
             req.flash('signInMessage', 'Username or Password is not correct, or User does not exist');
-            console.log("zzz");
             return res.redirect('/sign-in');
         }
         req.login(user, (err) => {
