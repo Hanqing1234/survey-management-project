@@ -18,7 +18,7 @@ import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, Proce
 import {DisplaySignInPage, ProcessSignInPage, ProcessSignOutPage, 
     DisplayRegisterPage, ProcessRegisterPage, requireAuth} from '../Controller/user'
 /* GET home page. */
-router.get('/', DisplaySurveyListPage);
+router.get('/', DisplayAllSurveyListPage);
 
 /* GET home page. */
 router.get('/home', DisplaySurveyListPage);

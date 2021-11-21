@@ -9,7 +9,7 @@ exports.default = router;
 const survey_1 = require("../Controller/survey");
 const question_1 = require("../Controller/question");
 const user_1 = require("../Controller/user");
-router.get('/', survey_1.DisplaySurveyListPage);
+router.get('/', survey_1.DisplayAllSurveyListPage);
 router.get('/home', survey_1.DisplaySurveyListPage);
 router.get('/sign-in', user_1.DisplaySignInPage);
 router.post('/sign-in', user_1.ProcessSignInPage);
