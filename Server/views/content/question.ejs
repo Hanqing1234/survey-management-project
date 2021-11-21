@@ -25,23 +25,19 @@
         <label for="endDate">Expiration date:</label>
         <input type="date" id="endDate" name="endDate" value="<%= list.end_Date%>" required>  
       </div>
-
+      <div class=" text-end" >
+        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit fa-lg"></i> Save</button>
+     </div>
       </div>
-    </div>
-
-      <% if (title == "Question") { %>
-      <% } else { %>
-     <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Next</button>
-     <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
-     <% } %>
-
+    </div> 
+  
 <div class="mx-0 mx-sm-auto" style="margin-top: 10px;">
     <div class="card">
       <div class="card-body">
          
-        <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Multiple Choice Question</a>
-        <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add T/F Question</a>
-        <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a>
+        <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Multiple Choice Question</a><br>
+        <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add T/F Question</a><br>
+        <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a><br>
 
         <br>
         <br> 
@@ -119,10 +115,9 @@
 
       </div>
       <div class="card-footer text-end" >
-         <button type="submit" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Complete</button>
+        <a href="/survey-list" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Complete</button></a>
       </div>
       </div>
-      
       </div>
-    </form>
+   </form>
 </div>

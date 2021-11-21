@@ -38,7 +38,6 @@ function ProcessQuestionPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/survey-list');
     });
 }
 exports.ProcessQuestionPage = ProcessQuestionPage;
