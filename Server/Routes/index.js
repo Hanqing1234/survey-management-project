@@ -1,5 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
+let __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -10,8 +10,8 @@ const index_1 = require("../Controller/index");
 const survey_1 = require("../Controller/survey");
 const question_1 = require("../Controller/question");
 const user_1 = require("../Controller/user");
-router.get('/', index_1.DisplayHomePage);
-router.get('/home', index_1.DisplayHomePage);
+router.get('/', survey_1.DisplaySurveyListPage);
+router.get('/home', survey_1.DisplaySurveyListPage);
 router.get('/sign-in', user_1.DisplaySignInPage);
 router.post('/sign-in', user_1.ProcessSignInPage);
 router.get('/sign-out', user_1.ProcessSignOutPage);
