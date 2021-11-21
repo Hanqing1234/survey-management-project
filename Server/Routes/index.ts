@@ -12,7 +12,7 @@ import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, Proc
 import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
         ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
         ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,
-        DisplayExpiryDatePage , ProcessExpiryDatePage
+        DisplayDatePage , ProcessDatePage
         } from '../Controller/question';    
 
 import {DisplaySignInPage, ProcessSignInPage, ProcessSignOutPage, 
@@ -87,10 +87,10 @@ router.post('/update-question/:id', requireAuth,ProcessUpdateQuestionPage);
 router.get('/delete-question/:id',  requireAuth,ProcessDeleteQuestionPage);
 
 /*GET display /expiry-date/:id page */
-router.get('/date', requireAuth,DisplayExpiryDatePage);
+router.get('/date', requireAuth,DisplayDatePage);
 
 /*POST display /expiry-date/:id page */
-router.post('/date', requireAuth,ProcessExpiryDatePage);
+router.post('/date', requireAuth,ProcessDatePage);
 
 /*GET display /take-survey/:id page */
 router.get('/take-survey/:id', DisplayTakeSurveyPage);

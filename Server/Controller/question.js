@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessExpiryDatePage = exports.DisplayExpiryDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.ProcessQuestionPage = exports.DisplayQuestionPage = void 0;
+exports.ProcessDatePage = exports.DisplayDatePage = exports.ProcessDeleteQuestionPage = exports.ProcessUpdateQuestionPage = exports.DisplayUpdateQuestionPage = exports.ProcessAddSAQuestionPage = exports.DisplayAddSAQuestionPage = exports.ProcessAddTFQuestionPage = exports.DisplayAddTFQuestionPage = exports.ProcessAddMCQuestionPage = exports.DisplayAddMCQuestionPage = exports.ProcessQuestionPage = exports.DisplayQuestionPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 const user_1 = require("./user");
@@ -29,7 +29,9 @@ function ProcessQuestionPage(req, res, next) {
     let updatedSurveyList = new surveys_1.default({
         "_id": id,
         "title": req.body.name,
-        "author": req.body.author
+        "author": req.body.author,
+        "start_Date": req.body.startDate,
+        "end_Date": req.body.endDate
     });
     surveys_1.default.updateOne({ _id: id }, updatedSurveyList, {}, (err) => {
         if (err) {
@@ -213,7 +215,7 @@ function ProcessDeleteQuestionPage(req, res, next) {
     });
 }
 exports.ProcessDeleteQuestionPage = ProcessDeleteQuestionPage;
-function DisplayExpiryDatePage(req, res, next) {
+function DisplayDatePage(req, res, next) {
     surveys_1.default.find((err, surveyCollection) => {
         if (err) {
             console.error(err);
@@ -221,11 +223,11 @@ function DisplayExpiryDatePage(req, res, next) {
         }
         console.log(surveyCollection);
         console.log(surveyCollection[(surveyCollection.length - 1)]._id);
-        res.render('index', { title: 'Survey List', page: 'date', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
+        res.render('index', { title: 'Add Date', page: 'date', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
     });
 }
-exports.DisplayExpiryDatePage = DisplayExpiryDatePage;
-function ProcessExpiryDatePage(req, res, next) {
+exports.DisplayDatePage = DisplayDatePage;
+function ProcessDatePage(req, res, next) {
     surveys_1.default.find((err, surveyCollection) => {
         if (err) {
             console.error(err);
@@ -249,5 +251,5 @@ function ProcessExpiryDatePage(req, res, next) {
         });
     });
 }
-exports.ProcessExpiryDatePage = ProcessExpiryDatePage;
+exports.ProcessDatePage = ProcessDatePage;
 //# sourceMappingURL=question.js.map

@@ -32,8 +32,8 @@ router.post('/add-question-sa/:id', user_1.requireAuth, question_1.ProcessAddSAQ
 router.get('/update-question/:id', user_1.requireAuth, question_1.DisplayUpdateQuestionPage);
 router.post('/update-question/:id', user_1.requireAuth, question_1.ProcessUpdateQuestionPage);
 router.get('/delete-question/:id', user_1.requireAuth, question_1.ProcessDeleteQuestionPage);
-router.get('/date', user_1.requireAuth, question_1.DisplayExpiryDatePage);
-router.post('/date', user_1.requireAuth, question_1.ProcessExpiryDatePage);
+router.get('/date', user_1.requireAuth, question_1.DisplayDatePage);
+router.post('/date', user_1.requireAuth, question_1.ProcessDatePage);
 router.get('/take-survey/:id', survey_1.DisplayTakeSurveyPage);
 router.post('/take-survey/:id', survey_1.ProcessTakeSurveyPage);
 module.exports = router;

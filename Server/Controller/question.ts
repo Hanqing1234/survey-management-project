@@ -45,7 +45,9 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
     ({
       "_id": id,
       "title": req.body.name,
-      "author": req.body.author
+      "author": req.body.author,
+      "start_Date": req.body.startDate,
+      "end_Date": req.body.endDate
     });
   
     // find the clothing item via db.clothing.update({"_id":id}) and then update
@@ -337,7 +339,7 @@ export function ProcessDeleteQuestionPage(req: Request, res: Response, next: Nex
 }
 
 // Display date page
-export function DisplayExpiryDatePage(req: Request, res: Response, next: NextFunction): void
+export function DisplayDatePage(req: Request, res: Response, next: NextFunction): void
 {    
     //db.list.find()
     
@@ -351,13 +353,13 @@ export function DisplayExpiryDatePage(req: Request, res: Response, next: NextFun
         console.log(surveyCollection);
         console.log(surveyCollection[(surveyCollection.length - 1)]._id);
         
-        res.render('index', { title: 'Survey List', page: 'date', list: surveyCollection, displayName: UserDisplayName(req)});      
+        res.render('index', { title: 'Add Date', page: 'date', list: surveyCollection, displayName: UserDisplayName(req)});      
        
     });   
 }
 
 // Process date page
-export function ProcessExpiryDatePage(req: Request, res: Response, next: NextFunction): void
+export function ProcessDatePage(req: Request, res: Response, next: NextFunction): void
 {
     // instantiate a new Survey List
     

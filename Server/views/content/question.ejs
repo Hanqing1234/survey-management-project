@@ -1,19 +1,33 @@
 <div class="row justify-content-lg-center g-3" style="margin: 50px;">
   <h1 style="text-align: center"><%= title %> </h1>
 
-  <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+  <form method="POST" class="col-lg-8 col-md-10 col-sm-10">
 
-      <div class="input-group mb-3">
+    <div class="card">
+
+      <div class="card-body">
+
+        <div class="input-group mb-3">
           <span class="input-group-text" id="name">Survey Name</span>
           <input id="name" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="Contact Name"
           name="name" value="<%= list.title %>" required>
       </div>
-
       <div class="input-group mb-3">
           <span class="input-group-text" id="name">Author</span>
           <input id="author" type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="Contact Number"
           name="author" value="<%= list.author%>" required>
       </div> 
+
+      <div class="form-group mb-2" >
+        <label for="startDate">Start date:</label>
+        <input type="date" id="startDate" name="startDate" value="<%= list.start_Date%>" required>
+        
+        <label for="endDate">Expiration date:</label>
+        <input type="date" id="endDate" name="endDate" value="<%= list.end_Date%>" required>  
+      </div>
+
+      </div>
+    </div>
 
       <% if (title == "Question") { %>
       <% } else { %>
@@ -21,23 +35,10 @@
      <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
      <% } %>
 
-<div class="mx-0 mx-sm-auto" style="margin-top: 110px;">
+<div class="mx-0 mx-sm-auto" style="margin-top: 10px;">
     <div class="card">
       <div class="card-body">
-        <div class="text-center">
-          <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
-          <p>
-            <strong>Your opinion matters</strong>
-          </p>
-          <p>
-            Have some ideas how to improve our product?
-            <strong>Give us your feedback.</strong>
-          </p>
-        </div>
-  
-        <hr/>
-
-     
+         
         <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Multiple Choice Question</a>
         <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add T/F Question</a>
         <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-1"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a>

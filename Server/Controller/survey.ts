@@ -7,6 +7,7 @@ import ResponseList from '../Models/response';
 
 import { NativeError } from 'mongoose';
 import { UserDisplayName } from './user';
+import moment from 'moment';
 
 export function DisplaySurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
@@ -49,7 +50,9 @@ export function DisplayAllSurveyListPage(req: Request | any, res: Response, next
 {
   SurveyList.find((err, surveyCollection) =>
       {
-         res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req)});      
+        
+        let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
+         res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req), dateNow: dateNow });      
       });
 };
 

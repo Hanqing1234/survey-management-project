@@ -24,8 +24,12 @@
                             <td><%= list[count].title %></td>
                             <td><%= list[count].start_Date %></td>  
                             <td><%= list[count].end_Date %></td>
-                            <td><%= list[count].author %></td>                              
-                            <td class="text-center"><a href="/take-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>                                                        
+                            <td><%= list[count].author %></td>
+                            <% if(list[count].start_Date > dateNow || list[count].end_Date < dateNow) { %>  
+                                <td class="text-center"><a href="/take-survey/<%= list[count]._id %>" class="btn btn-primary btn edit disabled"><i class="fas fa-edit fa-sm"></i> Survey expired or not started</a></td> 
+                                <% } else {%>                  
+                            <td class="text-center"><a href="/take-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>     
+                                <% } %>                                                    
                         </tr>
                     <% } %>    
                 </tbody>

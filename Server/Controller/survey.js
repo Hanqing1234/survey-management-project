@@ -1,5 +1,5 @@
 "use strict";
-let __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -8,6 +8,7 @@ const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 const response_1 = __importDefault(require("../Models/response"));
 const user_1 = require("./user");
+const moment_1 = __importDefault(require("moment"));
 function DisplaySurveyListPage(req, res, next) {
     if (!req.user) {
         surveys_1.default.find((err, surveyCollection) => {
@@ -38,7 +39,8 @@ function DisplaySurveyListPage(req, res, next) {
 exports.DisplaySurveyListPage = DisplaySurveyListPage;
 function DisplayAllSurveyListPage(req, res, next) {
     surveys_1.default.find((err, surveyCollection) => {
-        res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
+        let dateNow = (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD');
+        res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req), dateNow: dateNow });
     });
 }
 exports.DisplayAllSurveyListPage = DisplayAllSurveyListPage;

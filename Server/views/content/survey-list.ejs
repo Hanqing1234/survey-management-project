@@ -33,8 +33,6 @@
                         <% if(displayName) { %>   
                         <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit Survey</a></td>     
                         <% } %>
-
-                        <td class="text-center"><a href="/take-survey/<%= list[count]._id %>" class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Take Survey</a></td>
                         
                         <% if(displayName) { %> 
                         <td class="text-center"><a href="/survey-list/delete-survey/<%= list[count]._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td> 

@@ -1,4 +1,4 @@
-<div class="row justify-content-lg-center g-3" style="margin: 110px;">
+<div class="row justify-content-lg-center g-3" style="margin: 50px;">
     <h1 style="text-align: center"><%= title %> </h1>
 
     <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
@@ -16,12 +16,8 @@
         </div> 
 
         
-        <% if (title == "Update") { %>
-        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
-        <a href="/survey-list/delete/<%= list._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
-        <% } else { %>
+      
        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Next</button>
-       <% } %>
 
         <a href="/survey-list" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
         
