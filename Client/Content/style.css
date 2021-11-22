@@ -14,6 +14,11 @@ h1 {
   font-size: xx-large;
 }
 
+h5 {
+  font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color:	#003366 ;
+}
+
 body {
   padding: 50px;
   font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -25,3 +30,9 @@ a {
   color: #00B7FF;
   font-size: 18px;
 }
+
+span {
+  font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color:	#003366 ;
+}
+
