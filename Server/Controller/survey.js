@@ -46,7 +46,7 @@ function DisplayAllSurveyListPage(req, res, next) {
 exports.DisplayAllSurveyListPage = DisplayAllSurveyListPage;
 ;
 function DisplayAddSurveyPage(req, res, next) {
-    res.render('index', { title: 'Add Survey', page: 'update-survey', list: '', displayName: (0, user_1.UserDisplayName)(req) });
+    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', displayName: (0, user_1.UserDisplayName)(req) });
 }
 exports.DisplayAddSurveyPage = DisplayAddSurveyPage;
 function ProcessAddSurveyPage(req, res, next) {
