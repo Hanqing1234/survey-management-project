@@ -61,7 +61,7 @@ export function DisplayAddSurveyPage(req: Request, res: Response, next: NextFunc
 {
     // show the Update view
     
-    res.render('index', { title: 'Add Survey', page: 'update-survey', list: '', displayName: UserDisplayName(req)});
+    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', displayName: UserDisplayName(req)});
 }
 
 // Process Create page
