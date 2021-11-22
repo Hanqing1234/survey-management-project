@@ -38,6 +38,7 @@ function ProcessQuestionPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
+        res.redirect('/question/' + id);
     });
 }
 exports.ProcessQuestionPage = ProcessQuestionPage;

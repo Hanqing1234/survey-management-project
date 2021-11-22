@@ -28,7 +28,6 @@ export function DisplayQuestionPage(req: Request, res: Response, next: NextFunct
           {
               console.error(err);
               res.end(err);
-            
           }
           res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});      
         });
@@ -56,7 +55,8 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
       {
         console.error(err);
         res.end(err);
-      }     
+      } 
+      res.redirect('/question/' + id);    
     });
 }
 
