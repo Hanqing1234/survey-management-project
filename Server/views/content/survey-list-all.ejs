@@ -10,8 +10,8 @@
             <div class="col-sm-6">
                 <div class="card text-white bg-secondary mb-3 bg-opacity-75" style="max-width: 40rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><%= list[count].author %></h5>
-                        <p class="card-text"><%= list[count].title %></p>
+                        <h5 class="card-title"><%= list[count].title %></h5>
+                        <p class="card-text"><%= list[count].author %></p>
                         
                        <% if(list[count].start_Date > dateNow || list[count].end_Date < dateNow) { %>
                             <span class="badge rounded-pill bg-warning text-dark"><i class="far fa-clock fa-sm"></i> From: <%= list[count].start_Date %>  To <%= list[count].end_Date %></span> 
