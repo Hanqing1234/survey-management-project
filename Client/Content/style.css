@@ -36,3 +36,9 @@ span {
   color:	#003366 ;
 }
 
+#cardcorner {
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px 	#999999
+
+}
+
