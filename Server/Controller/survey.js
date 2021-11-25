@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplayAllSurveyListPage = exports.DisplaySurveyListPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
+const option_1 = __importDefault(require("../Models/option"));
 const response_1 = __importDefault(require("../Models/response"));
 const user_1 = require("./user");
 const moment_1 = __importDefault(require("moment"));
@@ -18,11 +19,9 @@ function DisplaySurveyListPage(req, res, next) {
     else {
         if (req.user.username === 'admin') {
             surveys_1.default.find((err, surveyCollection) => {
-                if (err) {
-                    console.error(err);
-                    res.end(err);
-                }
-                res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                question_1.default.find((err, questionCollection) => {
+                    res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2: questionCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                });
             });
         }
         else {
@@ -38,6 +37,8 @@ function DisplaySurveyListPage(req, res, next) {
 }
 exports.DisplaySurveyListPage = DisplaySurveyListPage;
 function DisplayAllSurveyListPage(req, res, next) {
+    option_1.default.find((err, surveyCollection) => {
+    });
     surveys_1.default.find((err, surveyCollection) => {
         let dateNow = (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD');
         res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req), dateNow: dateNow });
@@ -97,10 +98,13 @@ function ProcessTakeSurveyPage(req, res, next) {
     let responseJson = JSON.stringify(req.body, null, 2);
     console.log(responseJson);
     console.log("Thanks for taking survey");
+    console.log(typeof responseJson);
     let newResponse = new response_1.default({
-        responseText: responseJson,
-        survey_id: req.params.id
+        response_value: responseJson,
+        survey_ID: req.params.id
     });
+    console.log(newResponse);
+    console.log("---------------------------------");
     response_1.default.create(newResponse, (err) => {
         if (err) {
             console.error(err);

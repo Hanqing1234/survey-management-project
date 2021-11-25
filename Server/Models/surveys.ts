@@ -12,6 +12,64 @@ const SurveySchema = new Schema
     start_Date: String,
     end_Date: String,
     isActive: Boolean,
+    question:
+    {
+        first_Question: 
+        {
+            questionText: String,
+            option_Text: 
+            {
+                first_Choice: String,
+                second_Choice: String,
+                third_Choice: String,
+                fourth_Choice: String
+            }
+        },
+        second_Question: 
+        {
+            questionText: String,
+            option_Text: 
+            {
+                first_Choice: String,
+                second_Choice: String,
+                third_Choice: String,
+                fourth_Choice: String
+            }
+        },
+        third_Question: 
+        {
+            questionText: String,
+            option_Text: 
+            {
+                first_Choice: String,
+                second_Choice: String,
+                third_Choice: String,
+                fourth_Choice: String
+            }
+        },
+        fourth_Question:  
+        {
+            questionText: String,
+            option_Text: 
+            {
+                first_Choice: String,
+                second_Choice: String,
+                third_Choice: String,
+                fourth_Choice: String
+            }
+        },
+        q5: 
+        {
+            questionText: String,
+            optionText: 
+            {
+                first_Choice: String,
+                second_Choice: String,
+                third_Choice: String,
+                fourth_Choice: String
+            }
+        },
+    },
     created: 
     {
         type: String,

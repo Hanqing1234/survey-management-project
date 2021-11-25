@@ -10,6 +10,7 @@ import passport from 'passport';
 import { OutgoingMessage } from 'http';
 import { UnavailableForLegalReasons } from 'http-errors';
 import { UserDisplayName } from './user';
+import question from '../Models/question';
 
 // Display Edit question page
 export function DisplayQuestionPage(req: Request, res: Response, next: NextFunction): void
@@ -66,22 +67,16 @@ export function DisplayAddMCQuestionPage(req: Request, res: Response, next: Next
 {
     // show the Update view
     let id = req.params.id;
-
-    console.log(id);
-    
- 
-        QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd) =>
+    QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd) =>
+      {
+        if(err)
         {
-          if(err)
-          {
-              console.error(err);
-              res.end(err);         
-          }
-          //show the update view
-          console.log(questionToAdd);
+            console.error(err);
+            res.end(err);         
+        }
+        //show the update view
         res.render('index', { title: 'Add Multiple Choice Question', page: 'update-question-mc', list: questionToAdd, id: id, displayName: UserDisplayName(req)});
-        });               
-    
+      });               
 }
 
 
@@ -92,17 +87,45 @@ export function ProcessAddMCQuestionPage(req: Request, res: Response, next: Next
     
     let id = req.params.id;
     let newQuestion = new QuestionList
-  ({
-    "questionText": req.body.questionText,
-    "questionType": "Multiple Choice",
-    "survey_id": req.params.id,
-    "first_Choice": req.body.firstChoice,
-    "second_Choice": req.body.secondChoice,
-    "third_Choice": req.body.thirdChoice,
-    "fourth_Choice": req.body.fourthChoice
-  });
+    ({
+      "questionText": req.body.questionText,
+      "questionType": "Multiple Choice",
+      "survey_id": req.params.id,
+      "first_Choice": req.body.firstChoice,
+      "second_Choice": req.body.secondChoice,
+      "third_Choice": req.body.thirdChoice,
+      "fourth_Choice": req.body.fourthChoice
+    });
 
-  console.log(id);
+    let newSurvey = new SurveyList
+    ({
+      "_id": id,
+      question: 
+      {
+        first_Question: 
+        {
+          "questionText": req.body.questionText,
+           option_Text:
+           {
+            "first_Choice": req.body.firstChoice,
+            "second_Choice": req.body.secondChoice,
+            "third_Choice": req.body.thirdChoice,
+            "fourth_Choice": req.body.fourthChoice
+           }
+        }
+      }
+    });
+  console.log("--------------------------");
+  console.log(newSurvey);
+  SurveyList.updateOne({_id: id}, newSurvey, {}, (err) =>
+      {
+          if(err)
+          {
+              console.error(err);
+              res.end(err);
+          }
+          console.log(newSurvey);
+      });
 
   // db.list.insert({list data is here...})
   QuestionList.create(newQuestion, (err: NativeError) => 
@@ -118,120 +141,120 @@ export function ProcessAddMCQuestionPage(req: Request, res: Response, next: Next
 }
 
 //Display add MC question page
-export function DisplayAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
-{
-    // show the Update view
-    let id = req.params.id;
+// export function DisplayAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     // show the Update view
+//     let id = req.params.id;
 
-    console.log(id);
+//     console.log(id);
 
-    SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
-    {
-        if(err)
-        {
-            console.error(err);
-            res.end(err);
-        }
-        console.log(questionToAdd);
+//     SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
+//     {
+//         if(err)
+//         {
+//             console.error(err);
+//             res.end(err);
+//         }
+//         console.log(questionToAdd);
 
-        QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
-        {
-          if(err)
-          {
-              console.error(err);
-              res.end(err);         
-          }
-          //show the update view
-        res.render('index', { title: 'Add True or False Question', page: 'update-question-tf', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
-        });               
-    }); 
-}
+//         QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
+//         {
+//           if(err)
+//           {
+//               console.error(err);
+//               res.end(err);         
+//           }
+//           //show the update view
+//         res.render('index', { title: 'Add True or False Question', page: 'update-question-tf', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
+//         });               
+//     }); 
+// }
 
-// Process Create page
-export function ProcessAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
-{
-    // instantiate a new Survey List
+// // Process Create page
+// export function ProcessAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     // instantiate a new Survey List
     
-    let id = req.params.id;
-    let newQuestion = new QuestionList
-  ({
-    "questionText": req.body.questionText,
-    "questionType": "True/False",
-    "survey_id": req.params.id
-  });
+//     let id = req.params.id;
+//     let newQuestion = new QuestionList
+//   ({
+//     "questionText": req.body.questionText,
+//     "questionType": "True/False",
+//     "survey_id": req.params.id
+//   });
 
-  console.log(id);
+//   console.log(id);
 
-  // db.list.insert({list data is here...})
-  QuestionList.create(newQuestion, (err: NativeError) => 
-  {
-    if(err)
-    {
-      console.error(err);
-      res.end(err);
-    }
+//   // db.list.insert({list data is here...})
+//   QuestionList.create(newQuestion, (err: NativeError) => 
+//   {
+//     if(err)
+//     {
+//       console.error(err);
+//       res.end(err);
+//     }
 
-    res.redirect('/question/'+ req.params.id);
-  });
-}
+//     res.redirect('/question/'+ req.params.id);
+//   });
+// }
 
 //Display add MC question page
-export function DisplayAddSAQuestionPage(req: Request, res: Response, next: NextFunction): void
-{
-    // show the Update view
-    let id = req.params.id;
+// export function DisplayAddSAQuestionPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     // show the Update view
+//     let id = req.params.id;
 
-    console.log(id);
+//     console.log(id);
 
 
-    SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
-    {
-        if(err)
-        {
-            console.error(err);
-            res.end(err);
-        }
-        console.log(questionToAdd);
+//     SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
+//     {
+//         if(err)
+//         {
+//             console.error(err);
+//             res.end(err);
+//         }
+//         console.log(questionToAdd);
 
-        QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
-        {
-          if(err)
-          {
-              console.error(err);
-              res.end(err);         
-          }
-          //show the update view
-        res.render('index', { title: 'Add Short Answer Question', page: 'update-question-sa', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
-        });               
-    }); 
-}
+//         QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
+//         {
+//           if(err)
+//           {
+//               console.error(err);
+//               res.end(err);         
+//           }
+//           //show the update view
+//         res.render('index', { title: 'Add Short Answer Question', page: 'update-question-sa', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
+//         });               
+//     }); 
+// }
 
-// Process Create page
-export function ProcessAddSAQuestionPage(req: Request, res: Response, next: NextFunction): void
-{
-    // instantiate a new Survey List
+// // Process Create page
+// export function ProcessAddSAQuestionPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     // instantiate a new Survey List
     
-    let id = req.params.id;
-    let newQuestion = new QuestionList
-  ({
-    "questionText": req.body.questionText,
-    "questionType": "Short Answer",
-    "survey_id": req.params.id,
-    "option_Text" : req.body.optionText
-  });
+//     let id = req.params.id;
+//     let newQuestion = new QuestionList
+//   ({
+//     "questionText": req.body.questionText,
+//     "questionType": "Short Answer",
+//     "survey_id": req.params.id,
+//     "option_Text" : req.body.optionText
+//   });
 
-  // db.list.insert({list data is here...})
-  QuestionList.create(newQuestion, (err: NativeError) => 
-  {
-    if(err)
-    {
-      console.error(err);
-      res.end(err);
-    }
+//   // db.list.insert({list data is here...})
+//   QuestionList.create(newQuestion, (err: NativeError) => 
+//   {
+//     if(err)
+//     {
+//       console.error(err);
+//       res.end(err);
+//     }
 
-    res.redirect('/question/'+ req.params.id);
-  });
-}
+//     res.redirect('/question/'+ req.params.id);
+//   });
+// }
 
 //Display Update Page
 export function DisplayUpdateQuestionPage(req: Request, res: Response, next: NextFunction): void

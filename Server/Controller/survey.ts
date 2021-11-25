@@ -3,11 +3,14 @@ import express, {Request, Response, NextFunction} from 'express';
 //get a reference to the Model Class
 import SurveyList from '../Models/surveys';
 import QuestionList from '../Models/question';
+import OptionList from '../Models/option';
 import ResponseList from '../Models/response';
 
 import { NativeError } from 'mongoose';
 import { UserDisplayName } from './user';
 import moment from 'moment';
+
+
 
 export function DisplaySurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
@@ -25,14 +28,19 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
       {
         SurveyList.find((err, surveyCollection) =>
       {
-        if(err)
-        {
-          console.error(err);
-          res.end(err);
-        }
-        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: UserDisplayName(req)});      
+       
+        // console.log(surveyCollection[0].id);
+        // let surveyID = surveyCollection[0].id;
+        // console.log("--------------------");      
+
+        QuestionList.find(/*{survey_id: surveyID},{},{},*/ (err, questionCollection: any) => 
+        {             
+          res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection ,displayName: UserDisplayName(req)});
+        })
+              
       });
       } else{
+
       SurveyList.find({user_id: req.user.id}, {}, {}, (err, surveyCollection) =>
       {
         if(err)
@@ -48,9 +56,19 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
 
 export function DisplayAllSurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
+  OptionList.find((err, surveyCollection: any) =>
+    {
+      // console.log(2);
+      // let temp = JSON.parse(surveyCollection[surveyCollection.length - 1].optionText);
+      // console.log(temp);
+      // //console.log(surveyCollection[surveyCollection.length - 1].optionText.);
+      // console.log(temp.q1);
+      // console.log(Object.keys(temp).length);
+
+    });
+  
   SurveyList.find((err, surveyCollection) =>
       {
-        
         let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
          res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req), dateNow: dateNow });      
       });
@@ -131,18 +149,21 @@ export function DisplayTakeSurveyPage(req: Request, res: Response, next: NextFun
 // Process take-survey page
 export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFunction): void
 {
-  let responseJson = JSON.stringify(req.body, null, 2);
-
+   let responseJson = JSON.stringify(req.body, null, 2);
+  
+  // console.log((req.body.q1));
   console.log(responseJson);
   console.log("Thanks for taking survey");
-
-  //let newResponse = new ResponseList(responseJson);
+  console.log(typeof responseJson);
+  //let newResponse = new OptionList(responseJson);
   let newResponse = new ResponseList
   ({
-    responseText: responseJson,
-    survey_id: req.params.id
+    response_value: responseJson,
+    survey_ID: req.params.id
   });
 
+  console.log(newResponse);
+ console.log("---------------------------------")
   ResponseList.create(newResponse , (err: NativeError) => 
   {
     if(err)
@@ -150,5 +171,17 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
       console.error(err);
       res.end(err);
     }
+    
+    // OptionList.find((err, ResponseCollection: any) =>
+    // {
+    //   console.log(2);
+    //   let temp = JSON.parse(ResponseCollection[ResponseCollection.length - 1].optionText);
+    //   console.log(temp);
+    //   //console.log(surveyCollection[surveyCollection.length - 1].optionText.);
+    //   console.log(temp.q1);
+    //   console.log(Object.keys(temp).length);
+
+    // });
   });
+
 }

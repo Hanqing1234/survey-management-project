@@ -18,7 +18,6 @@
               <div>
     
           <hr/>
-    
           
         <% for(let count=0; count < list.length; count++) { %>
          
@@ -31,28 +30,28 @@
             </p>
     
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example1" value="<%= list[count].first_Choice %>"/>
+              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example1" value="<%= list[count].first_Choice %>"/>
               <label class="form-check-label" for="radio2Example1">
                 <%= list[count].first_Choice %>
               </label>           
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example2" value="<%= list[count].second_Choice %>"/>
+              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example2" value="<%= list[count].second_Choice %>"/>
               <label class="form-check-label" for="radio2Example2">
                 <%= list[count].second_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example3" value="<%= list[count].third_Choice %>"/>
+              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example3" value="<%= list[count].third_Choice %>"/>
               <label class="form-check-label" for="radio2Example3">
                 <%= list[count].third_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example4" value="<%= list[count].fourth_Choice %>"/>
+              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example4" value="<%= list[count].fourth_Choice %>"/>
               <label class="form-check-label" for="radio2Example4">
                 <%= list[count].fourth_Choice %>
               </label>
@@ -62,14 +61,14 @@
           </p>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example1" value="True"/>
+            <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example1" value="True"/>
             <label class="form-check-label" for="radio2Example1">
               True
             </label>
             </div>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example1" value="False"/>
+            <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example1" value="False"/>
             <label class="form-check-label" for="radio2Example1">
                 False
             </label>
@@ -79,7 +78,7 @@
             <strong><%= list[count].questionText %></strong>
           </p>
             <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="<%= count + 1 %>"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="q<%= count + 1 %>"></textarea>
             </div>
               <% } %>
           </form>
@@ -103,7 +102,7 @@
         You can go back to survey list now
       </div>
       <div class="modal-footer">
-        <a href="/survey-list" class="btn btn-primary">Go Back</a>
+        <a href="/survey-list-all" class="btn btn-primary">Go Back</a>
       </div>
     </div>
   </div>
