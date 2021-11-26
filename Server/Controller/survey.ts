@@ -27,28 +27,26 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
       if(req.user.username === 'admin')
       {
         SurveyList.find((err, surveyCollection) =>
-      {      
-        QuestionList.find((err, questionCollection: any) => 
-        {       
-          ResponseList.find((err, responseCollection: any) =>
-          {
-            
-            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
-          })      
-          
-        })
-              
+        {      
+          QuestionList.find((err, questionCollection: any) => 
+          {       
+            ResponseList.find((err, responseCollection: any) =>
+            {             
+              res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
+            })                  
+          });        
       });
       } else{
 
       SurveyList.find({user_id: req.user.id}, {}, {}, (err, surveyCollection) =>
       {
-        if(err)
-        {
-          console.error(err);
-          res.end(err);
-        }
-        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: UserDisplayName(req)});      
+        QuestionList.find((err, questionCollection: any) => 
+          {       
+            ResponseList.find((err, responseCollection: any) =>
+            {             
+              res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
+            })                  
+          });         
       });
     }
   }

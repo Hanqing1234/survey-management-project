@@ -28,11 +28,11 @@ function DisplaySurveyListPage(req, res, next) {
         }
         else {
             surveys_1.default.find({ user_id: req.user.id }, {}, {}, (err, surveyCollection) => {
-                if (err) {
-                    console.error(err);
-                    res.end(err);
-                }
-                res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                question_1.default.find((err, questionCollection) => {
+                    response_1.default.find((err, responseCollection) => {
+                        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2: questionCollection, list3: responseCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                    });
+                });
             });
         }
     }
