@@ -97,35 +97,35 @@ export function ProcessAddMCQuestionPage(req: Request, res: Response, next: Next
       "fourth_Choice": req.body.fourthChoice
     });
 
-    let newSurvey = new SurveyList
-    ({
-      "_id": id,
-      question: 
-      {
-        first_Question: 
-        {
-          "questionText": req.body.questionText,
-           option_Text:
-           {
-            "first_Choice": req.body.firstChoice,
-            "second_Choice": req.body.secondChoice,
-            "third_Choice": req.body.thirdChoice,
-            "fourth_Choice": req.body.fourthChoice
-           }
-        }
-      }
-    });
-  console.log("--------------------------");
-  console.log(newSurvey);
-  SurveyList.updateOne({_id: id}, newSurvey, {}, (err) =>
-      {
-          if(err)
-          {
-              console.error(err);
-              res.end(err);
-          }
-          console.log(newSurvey);
-      });
+  //   let newSurvey = new SurveyList
+  //   ({
+  //     "_id": id,
+  //     question: 
+  //     {
+  //       first_Question: 
+  //       {
+  //         "questionText": req.body.questionText,
+  //          option_Text:
+  //          {
+  //           "first_Choice": req.body.firstChoice,
+  //           "second_Choice": req.body.secondChoice,
+  //           "third_Choice": req.body.thirdChoice,
+  //           "fourth_Choice": req.body.fourthChoice
+  //          }
+  //       }
+  //     }
+  //   });
+  // console.log("--------------------------");
+  // console.log(newSurvey);
+  // SurveyList.updateOne({_id: id}, newSurvey, {}, (err) =>
+  //     {
+  //         if(err)
+  //         {
+  //             console.error(err);
+  //             res.end(err);
+  //         }
+  //         console.log(newSurvey);
+  //     });
 
   // db.list.insert({list data is here...})
   QuestionList.create(newQuestion, (err: NativeError) => 

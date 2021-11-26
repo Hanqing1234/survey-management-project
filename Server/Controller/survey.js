@@ -20,7 +20,9 @@ function DisplaySurveyListPage(req, res, next) {
         if (req.user.username === 'admin') {
             surveys_1.default.find((err, surveyCollection) => {
                 question_1.default.find((err, questionCollection) => {
-                    res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2: questionCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                    response_1.default.find((err, responseCollection) => {
+                        res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2: questionCollection, list3: responseCollection, displayName: (0, user_1.UserDisplayName)(req) });
+                    });
                 });
             });
         }
@@ -96,15 +98,26 @@ function DisplayTakeSurveyPage(req, res, next) {
 exports.DisplayTakeSurveyPage = DisplayTakeSurveyPage;
 function ProcessTakeSurveyPage(req, res, next) {
     let responseJson = JSON.stringify(req.body, null, 2);
-    console.log(responseJson);
-    console.log("Thanks for taking survey");
-    console.log(typeof responseJson);
+    console.log((req.body)[0]);
     let newResponse = new response_1.default({
-        response_value: responseJson,
-        survey_ID: req.params.id
+        survey_id: req.params.id,
+        first_question: req.body.q1,
+        second_question: req.body.q2,
+        third_question: req.body.q3,
+        fourth_question: req.body.q4,
+        fifth_question: req.body.q5,
+        question: {
+            option: responseJson
+        }
     });
-    console.log(newResponse);
     console.log("---------------------------------");
+    console.log(newResponse.question.option);
+    let a = JSON.parse(newResponse.question.option);
+    console.log(a);
+    console.log((req.body));
+    console.log(a);
+    console.log(Object.values(a).length);
+    console.log(Object.keys(a)[0]);
     response_1.default.create(newResponse, (err) => {
         if (err) {
             console.error(err);

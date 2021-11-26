@@ -42,50 +42,87 @@
                                 
                           <!-------------------------------Details start here------------------------------------>
                           <div class="row" name="example">
+              
                             <% for(let count2 = 0; count2 < list2.length; count2++) { %>
-                            <div class="col-md-6">     
-                                <table class="table table-borderless">                                                                                
-                                    <thead>
+                              <% if(list2[count2].survey_id == list[count]._id) {%> 
+                              <div class="col-md-6">     
+                                <table class="table table-bordered">                                                                                
+                                    <thead style="text-align: center">
                                       <tr>
-                                        <td colspan="2" style="text-align:center">                                         
+                                        <th scope="row">                                         
                                           <%= list2[count2].questionText %>
-                                        </td>
+                                        </th>
                                         <td>votes</td>
                                       </tr>
                                     </thead>
 
                                     <tbody style="text-align:center">
+                                      <% let firstOptionCount = 0 %>
+                                      <% let secondOptionCount = 0 %> 
+                                      <% let thirdOptionCount = 0 %> 
+                                      <% let fourthOptionCount = 0 %>
+                                      <!--Search all the response list-->  
+                                      <% for(let count3 = 0; count3 < list3.length; count3++) {%> 
+                                        <!--Find if the response belongs to this survey-->
+                                       <% if(list3[count3].survey_id == list[count]._id) {%>
+                                        <!--Search all the response submitted-->
+                                        <% for(let count4 = 0; count4 < Object.values(JSON.parse(list3[count3].question.option)).length; count4++) {%> 
+                                         
+                                          <% switch (Object.values(JSON.parse(list3[count3].question.option))[count4]) {
+                                            case list2[count2].first_Choice : %>
+                                            <% firstOptionCount++ %>
+                                                    <% break;
+                                            
+                                            case list2[count2].second_Choice : %>
+                                            <%secondOptionCount++%>
+                                                    <% break;
+                                            
+                                            case list2[count2].third_Choice : %>
+                                            <%thirdOptionCount++%>
+                                                    <% break;
 
+                                            case list2[count2].fourth_Choice : %>
+                                            <%fourthOptionCount++ %>
+                                                    <% break;
+
+                                            default: %>
+                                              <% break;
+
+                                            } %>
+                                        <% } %> 
+                                        <% } %>
+                                        <% } %>
                                       <tr>
-                                        <th scope="row">Q1: <%=list2[count2].first_Choice %></th>
-                                        <td>0</td>
+                                        <th scope="row"><%=list2[count2].first_Choice %></th>                             
+                                        <td><%= firstOptionCount %></td>
                                       </tr>
 
                                       <tr>
-                                        <th scope="row">Q2: <%=list2[count2].second_Choice %></th>
-                                        <td>0</td>
+                                        <th scope="row"><%=list2[count2].second_Choice %></th>
+                                        <td><%= secondOptionCount %></td>
                                        
                                       </tr>
 
                                       <tr>
-                                        <th scope="row">Q3: <%=list2[count2].third_Choice %></th>
-                                        <td>0</td>                                      
+                                        <th scope="row"> <%=list2[count2].third_Choice %></th>
+                                        <td><%= thirdOptionCount %></td>                                      
                                       </tr>
 
                                       <tr>
-                                        <th scope="row">Q4: <%=list2[count2].fourth_Choice %></th>
-                                        <td >0</td>                                      
+                                        <th scope="row"><%=list2[count2].fourth_Choice %></th>
+                                        <td><%= fourthOptionCount %></td>                                      
                                       </tr>
-                                      
+                                    
                                     </tbody>
                                   </table>
                                     </div>                                                                                                  
-                                    <% } %>                                    
+                                    <% } %> 
+                                    <% } %>                                  
                           </div>                     
                             </div>
                                     
 
-                          
+                         
                                 
                       <!---------------------------------Details stop here---------------------------------->     
                           </div> 

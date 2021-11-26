@@ -64,29 +64,6 @@ function ProcessAddMCQuestionPage(req, res, next) {
         "third_Choice": req.body.thirdChoice,
         "fourth_Choice": req.body.fourthChoice
     });
-    let newSurvey = new surveys_1.default({
-        "_id": id,
-        question: {
-            first_Question: {
-                "questionText": req.body.questionText,
-                option_Text: {
-                    "first_Choice": req.body.firstChoice,
-                    "second_Choice": req.body.secondChoice,
-                    "third_Choice": req.body.thirdChoice,
-                    "fourth_Choice": req.body.fourthChoice
-                }
-            }
-        }
-    });
-    console.log("--------------------------");
-    console.log(newSurvey);
-    surveys_1.default.updateOne({ _id: id }, newSurvey, {}, (err) => {
-        if (err) {
-            console.error(err);
-            res.end(err);
-        }
-        console.log(newSurvey);
-    });
     question_1.default.create(newQuestion, (err) => {
         if (err) {
             console.error(err);

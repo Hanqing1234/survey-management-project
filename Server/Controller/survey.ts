@@ -27,15 +27,15 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
       if(req.user.username === 'admin')
       {
         SurveyList.find((err, surveyCollection) =>
-      {
-       
-        // console.log(surveyCollection[0].id);
-        // let surveyID = surveyCollection[0].id;
-        // console.log("--------------------");      
-
-        QuestionList.find(/*{survey_id: surveyID},{},{},*/ (err, questionCollection: any) => 
-        {             
-          res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection ,displayName: UserDisplayName(req)});
+      {      
+        QuestionList.find((err, questionCollection: any) => 
+        {       
+          ResponseList.find((err, responseCollection: any) =>
+          {
+            
+            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
+          })      
+          
         })
               
       });
@@ -151,25 +151,44 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
 {
    let responseJson = JSON.stringify(req.body, null, 2);
   
-  // console.log((req.body.q1));
-  console.log(responseJson);
-  console.log("Thanks for taking survey");
-  console.log(typeof responseJson);
+   console.log((req.body)[0]);
+  // console.log(responseJson);
+  // console.log("Thanks for taking survey");
+  // console.log(new Map(Object.entries(req.body)));
+
   //let newResponse = new OptionList(responseJson);
-  let newResponse = new ResponseList
+  let newResponse: any = new ResponseList
   ({
-    response_value: responseJson,
-    survey_ID: req.params.id
+    survey_id: req.params.id,
+    first_question: req.body.q1,
+    second_question: req.body.q2,
+    third_question: req.body.q3,
+    fourth_question: req.body.q4,
+    fifth_question: req.body.q5, 
+    question: 
+    {
+        option: responseJson
+    } 
+
   });
 
-  console.log(newResponse);
- console.log("---------------------------------")
+
+  console.log("---------------------------------");
+  console.log(newResponse.question.option);
+  let a = JSON.parse(newResponse.question.option);
+
+  console.log(a);
+  console.log((req.body));
+  console.log(a);
+  console.log(Object.values(a).length);
+  console.log(Object.keys(a)[0]);
   ResponseList.create(newResponse , (err: NativeError) => 
   {
     if(err)
     {
       console.error(err);
       res.end(err);
+
     }
     
     // OptionList.find((err, ResponseCollection: any) =>
