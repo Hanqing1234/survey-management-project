@@ -61,14 +61,16 @@
                                       <% let secondOptionCount = 0 %> 
                                       <% let thirdOptionCount = 0 %> 
                                       <% let fourthOptionCount = 0 %>
+                                      
                                       <!--Search all the response list-->  
                                       <% for(let count3 = 0; count3 < list3.length; count3++) {%> 
                                         <!--Find if the response belongs to this survey-->
                                        <% if(list3[count3].survey_id == list[count]._id) {%>
                                         <!--Search all the response submitted-->
-                                        <% for(let count4 = 0; count4 < Object.values(JSON.parse(list3[count3].question.option)).length; count4++) {%> 
-                                         
+                                        <% for(let count4 = 0; count4 < Object.values(JSON.parse(list3[count3].question.option)).length; count4++) {%>           
+                                          <% if((Object.keys(JSON.parse(list3[count3].question.option))[count4]) == list2[count2].questionText) {%>
                                           <% switch (Object.values(JSON.parse(list3[count3].question.option))[count4]) {
+                                            
                                             case list2[count2].first_Choice : %>
                                             <% firstOptionCount++ %>
                                                     <% break;
@@ -90,6 +92,7 @@
 
                                             } %>
                                         <% } %> 
+                                        <% } %>
                                         <% } %>
                                         <% } %>
                                       <tr>

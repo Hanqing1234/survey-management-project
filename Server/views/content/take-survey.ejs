@@ -30,28 +30,28 @@
             </p>
     
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example1" value="<%= list[count].first_Choice %>"/>
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText%>" id="radio2Example1" value="<%= list[count].first_Choice %>"/>
               <label class="form-check-label" for="radio2Example1">
                 <%= list[count].first_Choice %>
               </label>           
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example2" value="<%= list[count].second_Choice %>"/>
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example2" value="<%= list[count].second_Choice %>"/>
               <label class="form-check-label" for="radio2Example2">
                 <%= list[count].second_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example3" value="<%= list[count].third_Choice %>"/>
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example3" value="<%= list[count].third_Choice %>"/>
               <label class="form-check-label" for="radio2Example3">
                 <%= list[count].third_Choice %>
               </label>
             </div>
   
             <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="q<%= count + 1 %>" id="radio2Example4" value="<%= list[count].fourth_Choice %>"/>
+              <input class="form-check-input" type="radio" name="<%= list[count].questionText %>" id="radio2Example4" value="<%= list[count].fourth_Choice %>"/>
               <label class="form-check-label" for="radio2Example4">
                 <%= list[count].fourth_Choice %>
               </label>
@@ -61,14 +61,14 @@
           </p>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example1" value="True"/>
+            <input class="form-check-input" type="radio" name=<%= list[count].questionText %> id="radio2Example1" value="True"/>
             <label class="form-check-label" for="radio2Example1">
               True
             </label>
             </div>
   
           <div class="form-check mb-2">
-            <input class="form-check-input" type="radio" name="<%= count + 1 %>" id="radio2Example1" value="False"/>
+            <input class="form-check-input" type="radio" name=<%= list[count].questionText %> id="radio2Example1" value="False"/>
             <label class="form-check-label" for="radio2Example1">
                 False
             </label>

@@ -98,26 +98,19 @@ function DisplayTakeSurveyPage(req, res, next) {
 exports.DisplayTakeSurveyPage = DisplayTakeSurveyPage;
 function ProcessTakeSurveyPage(req, res, next) {
     let responseJson = JSON.stringify(req.body, null, 2);
-    console.log((req.body)[0]);
     let newResponse = new response_1.default({
         survey_id: req.params.id,
-        first_question: req.body.q1,
-        second_question: req.body.q2,
-        third_question: req.body.q3,
-        fourth_question: req.body.q4,
-        fifth_question: req.body.q5,
         question: {
             option: responseJson
         }
     });
+    console.log(req.body);
     console.log("---------------------------------");
     console.log(newResponse.question.option);
     let a = JSON.parse(newResponse.question.option);
     console.log(a);
-    console.log((req.body));
-    console.log(a);
     console.log(Object.values(a).length);
-    console.log(Object.keys(a)[0]);
+    console.log(Object.keys(a));
     response_1.default.create(newResponse, (err) => {
         if (err) {
             console.error(err);

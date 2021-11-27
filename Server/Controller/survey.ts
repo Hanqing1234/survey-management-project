@@ -149,7 +149,6 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
 {
    let responseJson = JSON.stringify(req.body, null, 2);
   
-   console.log((req.body)[0]);
   // console.log(responseJson);
   // console.log("Thanks for taking survey");
   // console.log(new Map(Object.entries(req.body)));
@@ -157,12 +156,7 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
   //let newResponse = new OptionList(responseJson);
   let newResponse: any = new ResponseList
   ({
-    survey_id: req.params.id,
-    first_question: req.body.q1,
-    second_question: req.body.q2,
-    third_question: req.body.q3,
-    fourth_question: req.body.q4,
-    fifth_question: req.body.q5, 
+    survey_id: req.params.id, 
     question: 
     {
         option: responseJson
@@ -170,16 +164,16 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
 
   });
 
-
+  console.log(req.body);
   console.log("---------------------------------");
   console.log(newResponse.question.option);
   let a = JSON.parse(newResponse.question.option);
 
   console.log(a);
-  console.log((req.body));
-  console.log(a);
+
+
   console.log(Object.values(a).length);
-  console.log(Object.keys(a)[0]);
+  console.log(Object.keys(a));
   ResponseList.create(newResponse , (err: NativeError) => 
   {
     if(err)
