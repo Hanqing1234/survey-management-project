@@ -33,20 +33,16 @@
     
   
 <div class="mx-0 mx-sm-auto" style="margin-top: 10px;">
-    <div class="card">
-      <div class="card-body">
-         
+          
         <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Multiple Choice Question</a><br>
         <!---
         <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add T/F Question</a><br>
         <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a><br>
         -->
-        <br>
-        <br> 
 
-  
       <% for(let count=0; count < list2.length; count++) { %>
-        
+        <div class="card">
+          <div class="card-body">
           <p class="text-left">
             <th scope="row"><%= count + 1 %>.</th>
 
@@ -114,6 +110,8 @@
             <textarea class="form-control" id="exampleFormControlTextarea<%= count + 1 %>" rows="3"></textarea>
           </div>
             <% } %>-->
+            </div>
+            </div>
         <% } %> 
 
       </div>
