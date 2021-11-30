@@ -10,8 +10,8 @@ import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, Proc
      DisplayTakeSurveyPage, ProcessTakeSurveyPage, DisplayAllSurveyListPage} from '../Controller/survey';
 
 import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
-        ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, /*DisplayAddTFQuestionPage,
-        ProcessAddTFQuestionPage, DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,*/
+        ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
+        ProcessAddTFQuestionPage, /*DisplayAddSAQuestionPage, ProcessAddSAQuestionPage,*/
         DisplayDatePage , ProcessDatePage
         } from '../Controller/question';    
 
@@ -65,11 +65,11 @@ router.get('/add-question-mc/:id', requireAuth,DisplayAddMCQuestionPage);
 /*Post display /add-question-mc/:id page */
 router.post('/add-question-mc/:id', requireAuth,ProcessAddMCQuestionPage);
 
-// /*GET display /add-question-tf/:id page */
-// router.get('/add-question-tf/:id', requireAuth,DisplayAddTFQuestionPage);
+/*GET display /add-question-tf/:id page */
+router.get('/add-question-tf/:id', requireAuth,DisplayAddTFQuestionPage);
 
-// /*Post display /add-question-tf/:id page */
-// router.post('/add-question-tf/:id', requireAuth,ProcessAddTFQuestionPage);
+/*Post display /add-question-tf/:id page */
+router.post('/add-question-tf/:id', requireAuth,ProcessAddTFQuestionPage);
 
 // /*GET display /add-question-sa/:id page */
 // router.get('/add-question-sa/:id', requireAuth,DisplayAddSAQuestionPage);

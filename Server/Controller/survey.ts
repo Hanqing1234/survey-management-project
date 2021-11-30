@@ -73,11 +73,11 @@ export function DisplayAllSurveyListPage(req: Request | any, res: Response, next
 };
 
 // Display Create page
-export function DisplayAddSurveyPage(req: Request, res: Response, next: NextFunction): void
+export function DisplayAddSurveyPage(req: Request | any, res: Response, next: NextFunction): void
 {
     // show the Update view
     
-    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', displayName: UserDisplayName(req)});
+    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', author: req.user.username, displayName: UserDisplayName(req)});
 }
 
 // Process Create page
@@ -86,9 +86,9 @@ export function ProcessAddSurveyPage(req: Request | any, res: Response, next: Ne
     // instantiate a new Survey List
   let newSurvey = new SurveyList
   ({
-    "title": req.body.name,
-    "author": req.body.author,
-    "user_id": req.user.id
+    title: req.body.name,
+    author: req.user.username,
+    user_id: req.user.id
   });
   console.log(newSurvey);
   // db.list.insert({list data is here...})
@@ -166,14 +166,14 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
 
   console.log(req.body);
   console.log("---------------------------------");
-  console.log(newResponse.question.option);
-  let a = JSON.parse(newResponse.question.option);
+  // console.log(newResponse.question.option);
+  // let a = JSON.parse(newResponse.question.option);
 
-  console.log(a);
+  // console.log(a);
 
 
-  console.log(Object.values(a).length);
-  console.log(Object.keys(a));
+  // console.log(Object.values(a).length);
+  // console.log(Object.keys(a));
   ResponseList.create(newResponse , (err: NativeError) => 
   {
     if(err)

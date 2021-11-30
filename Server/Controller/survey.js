@@ -49,14 +49,14 @@ function DisplayAllSurveyListPage(req, res, next) {
 exports.DisplayAllSurveyListPage = DisplayAllSurveyListPage;
 ;
 function DisplayAddSurveyPage(req, res, next) {
-    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', displayName: (0, user_1.UserDisplayName)(req) });
+    res.render('index', { title: 'Create Survey', page: 'update-survey', list: '', author: req.user.username, displayName: (0, user_1.UserDisplayName)(req) });
 }
 exports.DisplayAddSurveyPage = DisplayAddSurveyPage;
 function ProcessAddSurveyPage(req, res, next) {
     let newSurvey = new surveys_1.default({
-        "title": req.body.name,
-        "author": req.body.author,
-        "user_id": req.user.id
+        title: req.body.name,
+        author: req.user.username,
+        user_id: req.user.id
     });
     console.log(newSurvey);
     surveys_1.default.create(newSurvey, (err) => {
@@ -106,11 +106,6 @@ function ProcessTakeSurveyPage(req, res, next) {
     });
     console.log(req.body);
     console.log("---------------------------------");
-    console.log(newResponse.question.option);
-    let a = JSON.parse(newResponse.question.option);
-    console.log(a);
-    console.log(Object.values(a).length);
-    console.log(Object.keys(a));
     response_1.default.create(newResponse, (err) => {
         if (err) {
             console.error(err);

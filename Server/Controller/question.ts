@@ -30,6 +30,7 @@ export function DisplayQuestionPage(req: Request, res: Response, next: NextFunct
               console.error(err);
               res.end(err);
           }
+          console.log(questionToAdd2);
           res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});      
         });
     });   
@@ -140,65 +141,65 @@ export function ProcessAddMCQuestionPage(req: Request, res: Response, next: Next
   });
 }
 
-//Display add MC question page
-// export function DisplayAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
-// {
-//     // show the Update view
-//     let id = req.params.id;
+//Display add TF question page
+export function DisplayAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
+{
+    // show the Update view
+    let id = req.params.id;
 
-//     console.log(id);
+    console.log(id);
 
-//     SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
-//     {
-//         if(err)
-//         {
-//             console.error(err);
-//             res.end(err);
-//         }
-//         console.log(questionToAdd);
+    SurveyList.findById(id, {}, {}, (err, questionToAdd) =>
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(questionToAdd);
 
-//         QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
-//         {
-//           if(err)
-//           {
-//               console.error(err);
-//               res.end(err);         
-//           }
-//           //show the update view
-//         res.render('index', { title: 'Add True or False Question', page: 'update-question-tf', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
-//         });               
-//     }); 
-// }
+        QuestionList.find({survey_id: id}, {}, {}, (err, questionToAdd2) =>
+        {
+          if(err)
+          {
+              console.error(err);
+              res.end(err);         
+          }
+          //show the update view
+        res.render('index', { title: 'Add True or False Question', page: 'update-question-tf', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});
+        });               
+     }); 
+ }
 
-// // Process Create page
-// export function ProcessAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
-// {
-//     // instantiate a new Survey List
+// // Process Create TF questions page
+export function ProcessAddTFQuestionPage(req: Request, res: Response, next: NextFunction): void
+{
+    // instantiate a new Survey List
     
-//     let id = req.params.id;
-//     let newQuestion = new QuestionList
-//   ({
-//     "questionText": req.body.questionText,
-//     "questionType": "True/False",
-//     "survey_id": req.params.id
-//   });
+    let id = req.params.id;
+    let newQuestion = new QuestionList
+  ({
+    "questionText": req.body.questionText,
+    "questionType": "True/False",
+    "survey_id": req.params.id
+  });
 
-//   console.log(id);
+  console.log(id);
 
-//   // db.list.insert({list data is here...})
-//   QuestionList.create(newQuestion, (err: NativeError) => 
-//   {
-//     if(err)
-//     {
-//       console.error(err);
-//       res.end(err);
-//     }
+  // db.list.insert({list data is here...})
+  QuestionList.create(newQuestion, (err: NativeError) => 
+  {
+    if(err)
+    {
+      console.error(err);
+      res.end(err);
+    }
 
-//     res.redirect('/question/'+ req.params.id);
-//   });
-// }
+    res.redirect('/question/'+ req.params.id);
+  });
+}
 
-//Display add MC question page
+//Display add SA question page
 // export function DisplayAddSAQuestionPage(req: Request, res: Response, next: NextFunction): void
 // {
 //     // show the Update view
