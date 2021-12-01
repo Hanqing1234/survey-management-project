@@ -124,6 +124,7 @@
                         <div class="col-md-12 py-1">
                           <div class="card">
                             <div class="card-body">
+                              <div style="font-size:medium;text-align: center;"><%=list2[count2].questionText%></div>
                               <canvas id="chDonut<%= count2%>"></canvas>
                             </div>
                           </div>
@@ -186,7 +187,7 @@
                             </div>
                           </div>
                         </div>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>                    
                         <script type="text/javascript">
                           console.log("<%= list[count].title %>");
                           console.log("<%=list2[count2].questionText%>");
@@ -208,8 +209,8 @@
                               labels: {
                                 pointStyle: 'circle',
                                 usePointStyle: true
-                              }
-                            }
+                              }                   
+                        }
                           };
                                                                                              
                           let chDonutData<%= count2%> = {
@@ -219,7 +220,7 @@
                               backgroundColor: colors.slice(0, 4),
                               borderWidth: 0,
                               data: count
-                            }]
+                            }]                           
                           };                      
                           
                            let chDonut<%= count2%> = document.getElementById("chDonut<%= count2%>");
