@@ -41,9 +41,9 @@ exports.DisplaySurveyListPage = DisplaySurveyListPage;
 function DisplayAllSurveyListPage(req, res, next) {
     option_1.default.find((err, surveyCollection) => {
     });
-    let dateNow = (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD');
-    surveys_1.default.find({ start_Date: { $lte: dateNow }, end_Date: { $gte: dateNow } }, (err, surveyCollection) => {
-        res.render('index', { title: 'Surveys you can take now', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req), dateNow: dateNow });
+    surveys_1.default.find((err, surveyCollection) => {
+        let dateNow = (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD');
+        res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req), dateNow: dateNow });
     });
 }
 exports.DisplayAllSurveyListPage = DisplayAllSurveyListPage;

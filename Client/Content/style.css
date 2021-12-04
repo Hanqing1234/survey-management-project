@@ -6,23 +6,64 @@
 
 /* Custom css */
 
+body {
+  background-image: linear-gradient(to right bottom, #003366, #003b70, #004479, #004c83, #00558d, #005f97, #006aa2, #0074ac, #0083ba, #0092c7, #00a1d3, #00b0df);
+}
+
+.navbar {
+  background-color: #0033664f;
+
+}
+
+.navbar-brand {
+  padding-left: 30px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.226);
+  position: relative;
+  min-width: 300px;
+  height: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 0 auto;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  transition: .5s;
+  border-left: solid #00afdf 40px;
+}
+.card:hover {
+  transform:scale(1.1);
+}
+
+.card:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: rgba(255, 255, 255, .1);
+  z-index: 1;
+  transform: skewY(-5deg) scale(1.5);
+}
+
 
 /*content*/
 h1 {
   font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  color:	#003366 ;
+  color:	#fff ;
   font-size: xx-large;
 }
 
 h5 {
   font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  color:	#003366 ;
+  color:	#fff ;
 }
 
 body {
   padding: 50px;
   font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 18px;
+  color: #fff
 }
 
 a {
@@ -38,7 +79,19 @@ span {
 
 #cardcorner {
   border-radius: 15px;
-  box-shadow: 3px 3px 3px 	#999999
-
 }
 
+footer {
+  background-color: rgba(255, 255, 255, 0.185);
+}
+
+.table{
+  background-color: rgba(255, 255, 255, 0.438);
+}
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
