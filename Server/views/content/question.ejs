@@ -1,3 +1,4 @@
+<div class="flex-wrapper">
 <div class="row justify-content-lg-center g-3" style="margin: 50px;">
   <h1 style="text-align: center"><%= title %> </h1>
 
@@ -43,6 +44,46 @@
         <!--
           <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a><br>
         -->
+
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+  <i class="fas fa-plus-circle"></i> Add T/F Question (modal)
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card" style="background-color: rgba(0, 0, 0, 0.800);">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-plus-circle"></i> Add True or False Question</h5>
+      </div>
+      <div class="modal-body">
+        
+        <div class="row justify-content-lg-center g-3" style="margin: 80px;">
+
+    <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="name">Question</span>
+            <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name" aria-describedby="Contact Name"
+            name="questionText" value="<%=list2.questionText %>" required>
+        </div>
+       
+        <% if (title == "Update Question") { %>
+        <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Update</button>
+        <a href="/delete-question/<%= list2._id %>" class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
+        <a href="/question/<%= list2.survey_id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
+        <% } else { %>
+       <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i> Add</button>
+       <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i> Cancel</a>
+       <% } %>               
+    </form>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
       <% for(let count=0; count < list2.length; count++) { %>
         <div class="card">
@@ -125,4 +166,5 @@
       </div>
       </div>
    </form>
+</div>
 </div>
