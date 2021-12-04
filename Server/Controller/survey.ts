@@ -65,9 +65,9 @@ export function DisplayAllSurveyListPage(req: Request | any, res: Response, next
 
     });
   
-  SurveyList.find((err, surveyCollection) =>
-      {
-        let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
+  let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
+  SurveyList.find({start_Date:{$lte:dateNow}, end_Date:{$gte:dateNow}}, (err, surveyCollection) =>
+      { 
          res.render('index', { title: 'All Survey List', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req), dateNow: dateNow });      
       });
 };
