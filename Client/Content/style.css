@@ -4,11 +4,8 @@
    Filename: style.css
 */
 
-/* Custom css */
+/* templates and features */
 
-body {
-  background-image: linear-gradient(to right bottom, #003366, #003b70, #004479, #004c83, #00558d, #005f97, #006aa2, #0074ac, #0083ba, #0092c7, #00a1d3, #00b0df);
-}
 
 .navbar {
   background-color: #0033664f;
@@ -60,6 +57,7 @@ h5 {
 }
 
 body {
+  background-image: linear-gradient(to right bottom, #003366, #003b70, #004479, #004c83, #00558d, #005f97, #006aa2, #0074ac, #0083ba, #0092c7, #00a1d3, #00b0df);
   padding: 50px;
   font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 18px;
@@ -77,15 +75,12 @@ span {
   color:	#003366 ;
 }
 
-#cardcorner {
-  border-radius: 15px;
-}
-
 footer {
   background-color: rgba(255, 255, 255, 0.185);
 }
 
 .table{
+  max-width: 100%;
   background-color: rgba(255, 255, 255, 0.438);
 }
 
