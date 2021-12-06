@@ -51,6 +51,25 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
       "end_Date": req.body.endDate
     });
   
+    let newQuestion = new QuestionList
+  ({
+    "questionText": req.body.questionText,
+    "questionType": "True/False",
+    "survey_id": id
+  });
+
+
+  // db.list.insert({list data is here...})
+  QuestionList.create(newQuestion, (err: NativeError) => 
+  {
+    if(err)
+    {
+      console.error(err);
+      res.end(err);
+    }
+
+  });
+
     // find the clothing item via db.clothing.update({"_id":id}) and then update
     SurveyList.updateOne({_id: id}, updatedSurveyList, {}, (err) =>{
       if(err)
@@ -58,8 +77,9 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
         console.error(err);
         res.end(err);
       } 
-      res.redirect('/question/' + id);    
+       
     });
+    res.redirect('/question/' + id);   
 }
 
 

@@ -34,13 +34,24 @@ function ProcessQuestionPage(req, res, next) {
         "start_Date": req.body.startDate,
         "end_Date": req.body.endDate
     });
+    let newQuestion = new question_1.default({
+        "questionText": req.body.questionText,
+        "questionType": "True/False",
+        "survey_id": id
+    });
+    question_1.default.create(newQuestion, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+    });
     surveys_1.default.updateOne({ _id: id }, updatedSurveyList, {}, (err) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/question/' + id);
     });
+    res.redirect('/question/' + id);
 }
 exports.ProcessQuestionPage = ProcessQuestionPage;
 function DisplayAddMCQuestionPage(req, res, next) {
