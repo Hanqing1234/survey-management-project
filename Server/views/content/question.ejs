@@ -1,8 +1,9 @@
 <div class="flex-wrapper">
+
   <div class="row justify-content-lg-center g-3">
     <h1 style="text-align: center"><%= title %> </h1>
-
-    <form method="POST" class="col-lg-8 col-md-10 col-sm-10">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+    <form method="post">
 
       <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
@@ -30,30 +31,32 @@
           </div>
         </div>
       </div>
-<br>
+      
+    </form>
+      <br>
 
-      <div class="mx-0 mx-sm-auto" style="margin-top: 10px;">
 
-        <!-- <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i
+      <!-- <a href="/add-question-mc/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i
             class="fas fa-plus-circle"></i> Add Multiple Choice Question</a><br> -->
-        <!-- <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add T/F Question</a><br> -->
-        <!--
+      <!-- <a href="/add-question-tf/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add T/F Question</a><br> -->
+      <!--
           <a href="/add-question-sa/<%= list.id%>" id="addButton" class="btn btn-primary mb-2"><i class="fas fa-plus-circle"></i> Add Short Answer Question</a><br>
         -->
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#MCquestion">
-          <i class="fas fa-plus-circle"></i> Add Multiple Choice Question
-        </button>
-        <br>
-        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#TFquestion">
-          <i class="fas fa-plus-circle"></i> Add T/F Question
-        </button>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#MCquestion">
+        <i class="fas fa-plus-circle"></i> Add Multiple Choice Question
+      </button>
+      <br>
+      <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#TFquestion">
+        <i class="fas fa-plus-circle"></i> Add T/F Question
+      </button>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="MCquestion" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <!-- Modal -->
+   
+      <div class="modal fade" id="MCquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content card2" style="background-color: rgba(0, 0, 0, 0.800);">
             <div class="modal-header">
@@ -62,82 +65,100 @@
             </div>
             <div class="modal-body">
 
-              <div class="row justify-content-lg-center g-3">              
+              <div class="row justify-content-lg-center g-3">
+                
+                <form method="post">
 
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="name">Question</span>
-                    <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                      aria-describedby="Contact Name" name="questionText" value="<%=list2.questionText %>" required>
-                       <br>
-                      <span class="input-group-text" id="name">Question</span>
-                      <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                      aria-describedby="Contact Name" name="first_Choice"  required>
-                      <span class="input-group-text" id="name">Question</span>
-                      <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                      aria-describedby="Contact Name" name="second_Choice" required>
-                      <span class="input-group-text" id="name">Question</span>
-                      <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                      aria-describedby="Contact Name" name="third_Choice" required>
-                      <span class="input-group-text" id="name">Question</span>
-                      <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                      aria-describedby="Contact Name" name="fourth_Choice" required>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="name">Question</span>
+                  <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
+                     name="questionText" value="<%=list.questionText %>" required>
+                </div>
 
-                  </div>
-        
-                  <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i>
-                    Add</button>
-                  <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i>
-                    Cancel</a>             
+                <div class="input-group mb-3">
+                  <input id="questionText" type="text" class="form-control" placeholder="First Choice" aria-label="Name"
+                     name="firstChoice" required>
+                </div>
+
+                <div class="input-group mb-3">
+
+                  <input id="questionText" type="text" class="form-control" placeholder="Second Choice"
+                    aria-label="Name"  name="secondChoice"
+                     required>
+                </div>
+
+                <div class="input-group mb-3">
+
+                  <input id="questionText" type="text" class="form-control" placeholder="Third Choice" aria-label="Name"
+                     name="thirdChoice"  required>
+                </div>
+
+                <div class="input-group mb-3">
+
+                  <input id="questionText" type="text" class="form-control" placeholder="Fourth Choice"
+                    aria-label="Name"  name="fourthChoice"
+                    required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i>
+                  Add</button>
+                <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i>
+                  Cancel</a>
+
+                  </form>
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="TFquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content card2" style="background-color: rgba(0, 0, 0, 0.800);">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-plus-circle"></i> Add True or False
+                Question</h5>
+            </div>
+            <div class="modal-body">
+
+              <div class="row justify-content-lg-center g-3">
+                <form method="post">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="name">Question</span>
+                  <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
+                    aria-describedby="Contact Name" name="questionText" value="<%=list2.questionText %>" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i>
+                  Add</button>
+                <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i>
+                  Cancel</a>
+                  </form>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-        <div class="modal fade" id="TFquestion" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content card2" style="background-color: rgba(0, 0, 0, 0.800);">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-plus-circle"></i> Add True or False
-                  Question</h5>
-              </div>
-              <div class="modal-body">
 
-                <div class="row justify-content-lg-center g-3">              
+      <!-- End of Modal -->
 
-                    <div class="input-group mb-3">
-                      <span class="input-group-text" id="name">Question</span>
-                      <input id="questionText" type="text" class="form-control" placeholder="Question" aria-label="Name"
-                        aria-describedby="Contact Name" name="questionText" value="<%=list2.questionText %>" required>
-                    </div>
-          
-                    <button type="submit" class="btn btn-primary" id="editButton"><i class="fas fa-edit fa-lg"></i>
-                      Add</button>
-                    <a href="/question/<%= list.id %>" class="btn btn-danger btn"><i class="fas fa-backspace fa-lg"></i>
-                      Cancel</a>             
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <% for(let count=0; count < list2.length; count++) { %>
+      <div class="card">
+        <div class="card-body">
+          <p class="text-left">
+            <th scope="row"><%= count + 1 %>.</th>
 
-        <!-- End of Modal -->
+            <% if(list2[count].questionType == "Multiple Choice") { %>
 
-        <% for(let count=0; count < list2.length; count++) { %>
-        <div class="card">
-          <div class="card-body">
-            <p class="text-left">
-              <th scope="row"><%= count + 1 %>.</th>
+            <strong><%= list2[count].questionText %></strong>
+            <td class="text-center"><a href="/update-question/<%= list2[count]._id %>"
+                class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
+            <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>"
+                class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
 
-              <% if(list2[count].questionType == "Multiple Choice") { %>
-
-              <strong><%= list2[count].questionText %></strong>
-              <td class="text-center"><a href="/update-question/<%= list2[count]._id %>"
-                  class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
-              <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>"
-                  class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
-            </p>
 
             <div class="form-check mb-2">
               <input class="form-check-input" type="radio" name="McForm" id="radio2Example" value="Example1" />
@@ -173,44 +194,45 @@
                 class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
             <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>"
                 class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
-            </p>
+          </p>
 
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
-              <label class="form-check-label" for="radio2Example1">
-                True
-              </label>
-            </div>
-
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
-              <label class="form-check-label" for="radio2Example1">
-                False
-              </label>
-            </div>
-
-            <% } else {%>
-            <strong><%= list2[count].questionText %></strong>
-            <td class="text-center"><a href="/update-question/<%= list2[count]._id %>"
-                class="btn btn-primary btn edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
-            <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>"
-                class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
-            </p>
-            <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea<%= count + 1 %>" rows="3"></textarea>
-            </div>
-            <% } %>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
+            <label class="form-check-label" for="radio2Example1">
+              True
+            </label>
           </div>
-        </div>
-        <br>
-        <% } %>
 
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="TfForm<%= count + 1 %>" id="radio2Example1" />
+            <label class="form-check-label" for="radio2Example1">
+              False
+            </label>
+          </div>
+
+          <% } else {%>
+          <strong><%= list2[count].questionText %></strong>
+          <td class="text-center"><a href="/update-question/<%= list2[count]._id %>" class="btn btn-primary btn edit"><i
+                class="fas fa-edit fa-sm"></i> Edit</a></td>
+          <td class="text-center"><a href="/delete-question/<%= list2[count]._id %>"
+              class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
+          </p>
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea<%= count + 1 %>" rows="3"></textarea>
+          </div>
+          <% } %>
+        </div>
       </div>
+      <br>
+      <% } %>
+
+
       <div class="card-footer text-end">
         <a href="/survey-list" class="btn btn-primary"><i class="fas fa-edit fa-lg"></i> Complete</a>
       </div>
+
+
+    
+    </div>
   </div>
-</div>
-</form>
-</div>
 </div>

@@ -30,7 +30,7 @@ export function DisplayQuestionPage(req: Request, res: Response, next: NextFunct
               console.error(err);
               res.end(err);
           }
-          console.log(questionToAdd2);
+          
           res.render('index', { title: 'Question', page: 'question', list: questionToAdd, list2: questionToAdd2, displayName: UserDisplayName(req)});      
         });
     });   
@@ -50,14 +50,29 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
       "start_Date": req.body.startDate,
       "end_Date": req.body.endDate
     });
-  
-    let newQuestion = new QuestionList
+ 
+  let newQuestion = new QuestionList();
+
+  if(req.body.firstChoice == null)
+  {
+    newQuestion = new QuestionList
   ({
     "questionText": req.body.questionText,
     "questionType": "True/False",
     "survey_id": id
   });
-
+  }else{
+    newQuestion = new QuestionList
+  ({
+    "questionText": req.body.questionText,
+    "questionType": "Multiple Choice",
+    "first_Choice": req.body.firstChoice,
+    "second_Choice": req.body.secondChoice,
+    "third_Choice": req.body.thirdChoice,
+    "fourth_Choice": req.body.fourthChoice,
+    "survey_id": req.params.id
+  });
+  };
 
   // db.list.insert({list data is here...})
   QuestionList.create(newQuestion, (err: NativeError) => 
