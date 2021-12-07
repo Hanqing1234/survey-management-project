@@ -51,50 +51,54 @@ export function ProcessQuestionPage(req: Request, res: Response, next: NextFunct
       "end_Date": req.body.endDate
     });
  
-  let newQuestion = new QuestionList();
-
-  if(req.body.firstChoice == null)
-  {
-    newQuestion = new QuestionList
-  ({
-    "questionText": req.body.questionText,
-    "questionType": "True/False",
-    "survey_id": id
-  });
-  }else{
-    newQuestion = new QuestionList
-  ({
-    "questionText": req.body.questionText,
-    "questionType": "Multiple Choice",
-    "first_Choice": req.body.firstChoice,
-    "second_Choice": req.body.secondChoice,
-    "third_Choice": req.body.thirdChoice,
-    "fourth_Choice": req.body.fourthChoice,
-    "survey_id": req.params.id
-  });
-  };
-
-  // db.list.insert({list data is here...})
-  QuestionList.create(newQuestion, (err: NativeError) => 
-  {
-    if(err)
+    if(req.body.questionText != null)
     {
-      console.error(err);
-      res.end(err);
-    }
 
-  });
+    let newQuestion = new QuestionList();
 
-    // find the clothing item via db.clothing.update({"_id":id}) and then update
-    SurveyList.updateOne({_id: id}, updatedSurveyList, {}, (err) =>{
+    if(req.body.firstChoice == null)
+    {
+      newQuestion = new QuestionList
+    ({
+      "questionText": req.body.questionText,
+      "questionType": "True/False",
+      "survey_id": id
+    });
+    }else{
+      newQuestion = new QuestionList
+    ({
+      "questionText": req.body.questionText,
+      "questionType": "Multiple Choice",
+      "first_Choice": req.body.firstChoice,
+      "second_Choice": req.body.secondChoice,
+      "third_Choice": req.body.thirdChoice,
+      "fourth_Choice": req.body.fourthChoice,
+      "survey_id": req.params.id
+    });
+    };
+
+    // db.list.insert({list data is here...})
+    QuestionList.create(newQuestion, (err: NativeError) => 
+    {
       if(err)
       {
         console.error(err);
         res.end(err);
-      } 
-       
+      }
+
     });
-    res.redirect('/question/' + id);   
+  }
+
+      // find the clothing item via db.clothing.update({"_id":id}) and then update
+      SurveyList.updateOne({_id: id}, updatedSurveyList, {}, (err) =>{
+        if(err)
+        {
+          console.error(err);
+          res.end(err);
+        } 
+        
+      });
+      res.redirect('/question/' + id);   
 }
 
 

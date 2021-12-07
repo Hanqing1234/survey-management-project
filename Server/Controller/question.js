@@ -33,32 +33,34 @@ function ProcessQuestionPage(req, res, next) {
         "start_Date": req.body.startDate,
         "end_Date": req.body.endDate
     });
-    let newQuestion = new question_1.default();
-    if (req.body.firstChoice == null) {
-        newQuestion = new question_1.default({
-            "questionText": req.body.questionText,
-            "questionType": "True/False",
-            "survey_id": id
-        });
-    }
-    else {
-        newQuestion = new question_1.default({
-            "questionText": req.body.questionText,
-            "questionType": "Multiple Choice",
-            "first_Choice": req.body.firstChoice,
-            "second_Choice": req.body.secondChoice,
-            "third_Choice": req.body.thirdChoice,
-            "fourth_Choice": req.body.fourthChoice,
-            "survey_id": req.params.id
-        });
-    }
-    ;
-    question_1.default.create(newQuestion, (err) => {
-        if (err) {
-            console.error(err);
-            res.end(err);
+    if (req.body.questionText != null) {
+        let newQuestion = new question_1.default();
+        if (req.body.firstChoice == null) {
+            newQuestion = new question_1.default({
+                "questionText": req.body.questionText,
+                "questionType": "True/False",
+                "survey_id": id
+            });
         }
-    });
+        else {
+            newQuestion = new question_1.default({
+                "questionText": req.body.questionText,
+                "questionType": "Multiple Choice",
+                "first_Choice": req.body.firstChoice,
+                "second_Choice": req.body.secondChoice,
+                "third_Choice": req.body.thirdChoice,
+                "fourth_Choice": req.body.fourthChoice,
+                "survey_id": req.params.id
+            });
+        }
+        ;
+        question_1.default.create(newQuestion, (err) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }
+        });
+    }
     surveys_1.default.updateOne({ _id: id }, updatedSurveyList, {}, (err) => {
         if (err) {
             console.error(err);
