@@ -1,7 +1,7 @@
 <div class="flex-wrapper">
 <div class="container" style="margin-top: 70px;">
   <h1 style="text-align: center;"><%= title %></h1>
-
+<div class="table-responsive">
   <div class="row">
     <div class="col">
 
@@ -121,15 +121,11 @@
                           <th scope="row">False</th>
                           <td><%= falseOptionCount %></td>
                         </tr>
-
-                        <div class="col-md-12 py-1">
-                          <div class="bg-light">
-                            <div class="card-body ">
+                                        
+                            <div class="card-body bg-light">
                               <div style="font-size:medium;text-align: center;"><%=list2[count2].questionText%></div>
                               <canvas id="chDonut<%= count2%>"></canvas>
-                            </div>
-                          </div>
-                        </div>
+                            </div>                                              
 
                         <script type="text/javascript">
                           console.log("<%= list[count].title %>");
@@ -180,14 +176,14 @@
                           <td><%= fourthOptionCount %></td>
                         </tr>
 
-                        <div class="col-md-12 py-1">
-                          <div class="bg-light">
-                            <div class="card-body">
+                      
+                        
+                            <div class="card-body bg-light">
                               <div style="font-size:medium;text-align: center;"><%=list2[count2].questionText%></div>
                               <canvas id="chDonut<%= count2%>"></canvas>
                             </div>
-                          </div>
-                        </div>
+                          
+                        
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>                    
                         <script type="text/javascript">
                           console.log("<%= list[count].title %>");
@@ -259,6 +255,7 @@
       </table>
 
     </div>
+  </div>
   </div>
 </div>
 </div>

@@ -10,7 +10,6 @@
         if(!confirm("Are you sure?"))
         {
         event.preventDefault();
-        location.href = '/survey-list';
         }       
     });
     }  
