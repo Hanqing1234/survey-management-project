@@ -15,6 +15,12 @@
   padding-left: 30px;
 }
 
+@media (max-width: 480px) {
+  .x-navbar {
+      background-color: #003366f6;
+  }
+}
+
 .card {
   background-color: rgba(0, 0, 0, 0.226);
   position: relative;
@@ -52,7 +58,6 @@
   margin: 0 auto;
   box-shadow: 0 10px 15px rgba(0,0,0,0.3);
   transition: .5s;
-  border-left: solid #00afdf 40px;
 }
 
 .card:before {
@@ -98,7 +103,7 @@ span {
 }
 
 footer {
-  background-color: rgba(255, 255, 255, 0.185);
+  background-color: rgba(255, 255, 255, 0.178);
 }
 
 .table{
