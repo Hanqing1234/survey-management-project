@@ -45,7 +45,7 @@
                             class="btn btn-secondary btn-sm btn edit disabled"><i class="fas fa-edit fa-sm"></i> Survey
                             expired or not started</a>
                         <% } else {%>
-                        <span class="badge rounded-pill bg-success"><i class="far fa-clock fa-sm"></i> From:
+                        <span class="badge rounded-pill bg-success mb-2"><i class="far fa-clock fa-sm"></i> From:
                             <%= list[count].start_Date %> To <%= list[count].end_Date %></span>
                         <a href="/take-survey/<%= list[count]._id %>"
                             class="btn btn-info opacity-75 mb-1 btn-sm btn edit"><i class="fas fa-edit fa-sm"></i> Take
