@@ -1,5 +1,4 @@
 "use strict";
-// import Chart from "chart.js";
 
 (function() {
     // alarm when you click delete button

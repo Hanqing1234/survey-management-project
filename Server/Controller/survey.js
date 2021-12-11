@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplayAllSurveyListPage = exports.DisplaySurveyListPage = void 0;
+exports.ProcessExportSurveyPage = exports.DisplayExportSurveyPage = exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplayAllSurveyListPage = exports.DisplaySurveyListPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
 const option_1 = __importDefault(require("../Models/option"));
@@ -114,4 +114,26 @@ function ProcessTakeSurveyPage(req, res, next) {
     });
 }
 exports.ProcessTakeSurveyPage = ProcessTakeSurveyPage;
+function DisplayExportSurveyPage(req, res, next) {
+    let id = req.params.id;
+    surveys_1.default.find({ _id: id }, {}, {}, (err, surveyCollection) => {
+        question_1.default.find({ survey_id: id }, {}, {}, (err, questionCollection) => {
+            response_1.default.find({ survey_id: id }, {}, {}, (err, responseCollection) => {
+                res.render("index", {
+                    title: "Survey List",
+                    page: "export",
+                    list: surveyCollection,
+                    list2: questionCollection,
+                    list3: responseCollection,
+                    displayName: (0, user_1.UserDisplayName)(req),
+                });
+            });
+        });
+    });
+}
+exports.DisplayExportSurveyPage = DisplayExportSurveyPage;
+function ProcessExportSurveyPage(req, res, next) {
+    console.log("hello");
+}
+exports.ProcessExportSurveyPage = ProcessExportSurveyPage;
 //# sourceMappingURL=survey.js.map

@@ -24,52 +24,51 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
     else
     {
     //db.list.find()
-      if(req.user.username === 'admin')
-      {
-        SurveyList.find((err, surveyCollection) =>
-        {      
-          QuestionList.find((err, questionCollection: any) => 
-          {       
-            ResponseList.find((err, responseCollection: any) =>
-            {             
-              res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
-            })                  
-          });        
-      });
-      } else{
-
-      SurveyList.find({user_id: req.user.id}, {}, {}, (err, surveyCollection) =>
-      {
+    if(req.user.username === 'admin')
+    {
+      SurveyList.find((err, surveyCollection) =>
+      {      
         QuestionList.find((err, questionCollection: any) => 
-          {       
-            ResponseList.find((err, responseCollection: any) =>
-            {             
-              res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
-            })                  
-          });         
-      });
-    }
+        {       
+          ResponseList.find((err, responseCollection: any) =>
+          {             
+            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
+          })                  
+        });        
+    });
+  } else{
+
+    SurveyList.find({user_id: req.user.id}, {}, {}, (err, surveyCollection) =>
+    {
+      QuestionList.find((err, questionCollection: any) => 
+        {       
+          ResponseList.find((err, responseCollection: any) =>
+          {             
+            res.render('index', { title: 'Survey List', page: 'survey-list', list: surveyCollection, list2:questionCollection, list3: responseCollection, displayName: UserDisplayName(req)});
+          })                  
+        });         
+    });
   }
+}
 }
 
 export function DisplayAllSurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
   OptionList.find((err, surveyCollection: any) =>
     {
-      // console.log(2);
-      // let temp = JSON.parse(surveyCollection[surveyCollection.length - 1].optionText);
-      // console.log(temp);
-      // //console.log(surveyCollection[surveyCollection.length - 1].optionText.);
-      // console.log(temp.q1);
-      // console.log(Object.keys(temp).length);
+    // console.log(2);
+    // let temp = JSON.parse(surveyCollection[surveyCollection.length - 1].optionText);
+    // console.log(temp);
+    // //console.log(surveyCollection[surveyCollection.length - 1].optionText.);
+    // console.log(temp.q1);
+    // console.log(Object.keys(temp).length);
+  });
 
-    });
-  
-    let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
-    SurveyList.find({start_Date:{$lte:dateNow}, end_Date:{$gte:dateNow}}, (err, surveyCollection) =>
-        { 
-           res.render('index', { title: 'Surveys you can take now', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req), dateNow: dateNow });      
-        });
+  let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
+  SurveyList.find({start_Date:{$lte:dateNow}, end_Date:{$gte:dateNow}}, (err, surveyCollection) =>
+      { 
+         res.render('index', { title: 'Surveys you can take now', page: 'survey-list-all', list: surveyCollection, displayName:UserDisplayName(req), dateNow: dateNow });      
+      });
 };
 
 // Display Create page
@@ -194,5 +193,29 @@ export function ProcessTakeSurveyPage(req: Request, res: Response, next: NextFun
 
     // });
   });
+}
 
+// Display export page
+export function DisplayExportSurveyPage(req: Request,res: Response,next: NextFunction): void 
+{
+  let id = req.params.id;
+  SurveyList.find({ _id: id }, {}, {}, (err, surveyCollection) => {
+    QuestionList.find({survey_id: id },{}, {}, (err, questionCollection: any) => {
+        ResponseList.find({survey_id: id }, {}, {}, (err, responseCollection: any) => {
+          res.render("index", {
+            title: "Survey List",
+            page: "export",
+            list: surveyCollection,
+            list2: questionCollection,
+            list3: responseCollection,
+            displayName: UserDisplayName(req),
+          });
+        });
+    });
+  });
+}
+
+export function ProcessExportSurveyPage(req: Request,res: Response,next: NextFunction):void 
+{
+  console.log("hello");
 }

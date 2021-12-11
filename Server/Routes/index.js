@@ -34,5 +34,7 @@ router.get('/date', user_1.requireAuth, question_1.DisplayDatePage);
 router.post('/date', user_1.requireAuth, question_1.ProcessDatePage);
 router.get('/take-survey/:id', survey_1.DisplayTakeSurveyPage);
 router.post('/take-survey/:id', survey_1.ProcessTakeSurveyPage);
+router.get('/export-survey/:id', user_1.requireAuth, survey_1.DisplayExportSurveyPage);
+router.post('/export-survey/:id', user_1.requireAuth, survey_1.ProcessExportSurveyPage);
 module.exports = router;
 //# sourceMappingURL=index.js.map

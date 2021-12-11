@@ -7,7 +7,7 @@ export default router;
 import { DisplayHomePage} from '../Controller/index';
 
 import { DisplaySurveyListPage, DisplayAddSurveyPage, ProcessAddSurveyPage, ProcessDeleteSurveyPage,
-     DisplayTakeSurveyPage, ProcessTakeSurveyPage, DisplayAllSurveyListPage} from '../Controller/survey';
+     DisplayTakeSurveyPage, ProcessTakeSurveyPage, DisplayAllSurveyListPage, DisplayExportSurveyPage, ProcessExportSurveyPage} from '../Controller/survey';
 
 import { DisplayQuestionPage,ProcessQuestionPage,DisplayAddMCQuestionPage, ProcessAddMCQuestionPage, DisplayUpdateQuestionPage,
         ProcessUpdateQuestionPage, ProcessDeleteQuestionPage, DisplayAddTFQuestionPage,
@@ -97,5 +97,11 @@ router.get('/take-survey/:id', DisplayTakeSurveyPage);
 
 /*POST display /take-survey/:id page */
 router.post('/take-survey/:id', ProcessTakeSurveyPage);
+
+/*GET process /export-survey/:id page */ 
+router.get('/export-survey/:id',  requireAuth, DisplayExportSurveyPage);
+
+/*GET process /export-survey/:id page */ 
+router.post('/export-survey/:id',  requireAuth, ProcessExportSurveyPage);
 
 module.exports = router;
