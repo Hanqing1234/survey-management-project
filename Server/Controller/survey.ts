@@ -3,7 +3,6 @@ import express, {Request, Response, NextFunction} from 'express';
 //get a reference to the Model Class
 import SurveyList from '../Models/surveys';
 import QuestionList from '../Models/question';
-import OptionList from '../Models/option';
 import ResponseList from '../Models/response';
 
 import { NativeError } from 'mongoose';
@@ -54,16 +53,6 @@ export function DisplaySurveyListPage(req: Request | any, res: Response, next: N
 
 export function DisplayAllSurveyListPage(req: Request | any, res: Response, next: NextFunction): void
 {
-  OptionList.find((err, surveyCollection: any) =>
-    {
-    // console.log(2);
-    // let temp = JSON.parse(surveyCollection[surveyCollection.length - 1].optionText);
-    // console.log(temp);
-    // //console.log(surveyCollection[surveyCollection.length - 1].optionText.);
-    // console.log(temp.q1);
-    // console.log(Object.keys(temp).length);
-  });
-
   let dateNow = moment(new Date(Date.now())).format('YYYY-MM-DD');
   SurveyList.find({start_Date:{$lte:dateNow}, end_Date:{$gte:dateNow}}, (err, surveyCollection) =>
       { 

@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessExportSurveyPage = exports.DisplayExportSurveyPage = exports.ProcessTakeSurveyPage = exports.DisplayTakeSurveyPage = exports.ProcessDeleteSurveyPage = exports.ProcessAddSurveyPage = exports.DisplayAddSurveyPage = exports.DisplayAllSurveyListPage = exports.DisplaySurveyListPage = void 0;
 const surveys_1 = __importDefault(require("../Models/surveys"));
 const question_1 = __importDefault(require("../Models/question"));
-const option_1 = __importDefault(require("../Models/option"));
 const response_1 = __importDefault(require("../Models/response"));
 const user_1 = require("./user");
 const moment_1 = __importDefault(require("moment"));
@@ -39,8 +38,6 @@ function DisplaySurveyListPage(req, res, next) {
 }
 exports.DisplaySurveyListPage = DisplaySurveyListPage;
 function DisplayAllSurveyListPage(req, res, next) {
-    option_1.default.find((err, surveyCollection) => {
-    });
     let dateNow = (0, moment_1.default)(new Date(Date.now())).format('YYYY-MM-DD');
     surveys_1.default.find({ start_Date: { $lte: dateNow }, end_Date: { $gte: dateNow } }, (err, surveyCollection) => {
         res.render('index', { title: 'Surveys you can take now', page: 'survey-list-all', list: surveyCollection, displayName: (0, user_1.UserDisplayName)(req), dateNow: dateNow });

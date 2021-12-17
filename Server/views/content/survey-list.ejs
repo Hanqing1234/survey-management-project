@@ -1,5 +1,5 @@
 <div class="flex-wrapper">
-<div class="container" style="margin-top: 70px;">
+<div style="margin-top: 70px;">
   <h1 style="text-align: center;"><%= title %></h1>
 <div class="table-responsive table-bordered ">
   <div class="row">
@@ -12,8 +12,8 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Survey Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">Expiry Date</th>
+            <th scope="col" class="d-none d-lg-table-cell">Start Date</th>
+            <th scope="col" class="d-none d-lg-table-cell">Expiry Date</th>
             <th scope="col">Author</th>
             <th></th>
             <th></th>
@@ -28,23 +28,23 @@
             <tr>
             <td><%= count + 1 %></td>
             <td><%= list[count].title %></td>
-            <td><%= list[count].start_Date %></td>
-            <td><%= list[count].end_Date %></td>
+            <td class="d-none d-lg-table-cell"><%= list[count].start_Date %></td>
+            <td class="d-none d-lg-table-cell"><%= list[count].end_Date %></td>
             <td><%= list[count].author %></td>
             
             <td class="text-center">
-              <button type="button" class="btn btn-success" data-bs-toggle="collapse"
+              <button type="button" class="btn-sm btn-success" data-bs-toggle="collapse"
                 data-bs-target="#collapseExample<%= count + 1 %>" aria-expanded="false"
-                aria-controls="collapseExample"><i class="fas fa-chart-line"></i><span class="d-none d-md-inline text-white"> Show Details</span></button>
+                aria-controls="collapseExample"><i class="fas fa-chart-line fa-sm"></i><span class="d-none d-md-inline text-white"> Show Details</span></button>
             </td>
 
-            <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn edit"><i
+            <td class="text-center"><a href="/question/<%= list[count]._id %>" class="btn btn-primary btn-sm edit"><i
                   class="fas fa-edit fa-sm"></i><span class="d-none d-md-inline text-white"> Edit Survey</a></span></td>
             <td class="text-center"><a href="/survey-list/delete-survey/<%= list[count]._id %>"
-                  class="btn btn-danger btn delete"><i class="fas fa-trash-alt fa-sm"></i><span class="d-none d-md-inline text-white"> Delete</a></span></td> 
+                  class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i><span class="d-none d-md-inline text-white"> Delete</a></span></td> 
 
             <td class="text-center"><a href="/export-survey/<%= list[count]._id %>"
-              class="btn btn-info"><i class="fas fa-file-download fa-sm"></i><span class="d-none d-md-inline text-white"> Export</a></span></td>
+              class="btn btn-info btn-sm"><i class="fas fa-file-download fa-sm"></i><span class="d-none d-md-inline text-white"> Export</a></span></td>
         
           <tr>
             <td colspan="8">
